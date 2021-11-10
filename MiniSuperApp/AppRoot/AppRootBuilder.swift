@@ -25,14 +25,18 @@ final class AppRootBuilder: Builder<AppRootDependency>, AppRootBuildable {
   
   func build() -> (launchRouter: LaunchRouting, urlHandler: URLHandler) {
     let component = AppRootComponent(dependency: dependency)
-    
+    // AppRoot의 ViewController
     let tabBar = RootTabBarController()
     
     let interactor = AppRootInteractor(presenter: tabBar)
     
+    // 이 앱의 부모 riblet인 AppRoot riblet
+    // 아래 3가지 자식 riblet을 붙이기 위해 Builder를 생성
     let appHome = AppHomeBuilder(dependency: component)
     let financeHome = FinanceHomeBuilder(dependency: component)
     let profileHome = ProfileHomeBuilder(dependency: component)
+      
+    // 자식 riblet을 붙이는건 router가 함
     let router = AppRootRouter(
       interactor: interactor,
       viewController: tabBar,

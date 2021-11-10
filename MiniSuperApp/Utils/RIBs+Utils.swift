@@ -1,6 +1,7 @@
 import UIKit
 import ModernRIBs
 
+// UINavigationController를 숨기기위해 만든 객체
 final class NavigationControllerable: ViewControllable {
   
   var uiviewController: UIViewController { self.navigationController }
