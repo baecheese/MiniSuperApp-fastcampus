@@ -11,6 +11,15 @@ final class FinanceHomeViewController: UIViewController, FinanceHomePresentable,
   
   weak var listener: FinanceHomePresentableListener?
   
+  private let stackView: UIStackView = {
+    let stackView = UIStackView()
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    stackView.axis = .vertical
+    stackView.distribution = .fill
+    stackView.spacing = 4.0
+    return stackView
+  }()
+  
   init() {
     super.init(nibName: nil, bundle: nil)
     
@@ -32,12 +41,13 @@ final class FinanceHomeViewController: UIViewController, FinanceHomePresentable,
   func setupViews() {
     title = "슈퍼페이"
     tabBarItem = UITabBarItem(title: "슈퍼페이", image: UIImage(systemName: "creditcard"), selectedImage: UIImage(systemName: "creditcard.fill"))
-    label.text = "Finance Home"
     view.backgroundColor = .systemBlue
-    view.addSubview(label)
+    view.addSubview(stackView)
     NSLayoutConstraint.activate([
-      label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+      stackView.topAnchor.constraint(equalTo: view.topAnchor),
+      stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+      // stackview는 item이 늘어날 때마다 높이가 달라질 거라 bottom은 추가하지 않음
     ])
   }
 }
