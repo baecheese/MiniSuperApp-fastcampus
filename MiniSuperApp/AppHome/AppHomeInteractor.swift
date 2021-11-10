@@ -11,6 +11,8 @@ protocol AppHomePresentable: Presentable {
   func updateWidget(_ viewModels: [HomeWidgetViewModel])
 }
 
+// AppHome riblet이 부모 riblet에게 이벤트를 전달할 때 사용
+// delegate 패턴
 public protocol AppHomeListener: AnyObject {
   // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
