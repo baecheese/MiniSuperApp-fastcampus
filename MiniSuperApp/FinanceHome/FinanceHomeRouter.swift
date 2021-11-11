@@ -1,6 +1,6 @@
 import ModernRIBs
 
-protocol FinanceHomeInteractable: Interactable, SuperPayDashboardListener {
+protocol FinanceHomeInteractable: Interactable, SuperPayDashboardListener, CardOnFileDashboardListener {
   var router: FinanceHomeRouting? { get set }
   var listener: FinanceHomeListener? { get set }
 }
@@ -14,13 +14,18 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
   private let superPayDashBoardBuildable: SuperPayDashboardBuildable
   private var superPayRouting: Routing?
   
+  private let cardOnFileDashboardBuildable: CardOnFileDashboardBuildable
+  private var cardOnFileRouting: Routing?
+  
   // TODO: Constructor inject child builder protocols to allow building children.
   init(
     interactor: FinanceHomeInteractable,
     viewController: FinanceHomeViewControllable,
-    superPayDashBoardBuildable: SuperPayDashboardBuildable
+    superPayDashBoardBuildable: SuperPayDashboardBuildable,
+    cardOnFileDashboardBuildable: CardOnFileDashboardBuildable
   ) {
     self.superPayDashBoardBuildable = superPayDashBoardBuildable
+    self.cardOnFileDashboardBuildable = cardOnFileDashboardBuildable
     super.init(interactor: interactor, viewController: viewController)
     interactor.router = self
   }
@@ -39,4 +44,15 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
     // 자식 riblet을 붙임
     attachChild(router)
   }
+  
+  func attachCardOnFileDashboard() {
+    guard nil == cardOnFileRouting else { return }
+    let router = cardOnFileDashboardBuildable.build(withListener: interactor)
+    let dashboard = router.viewControllable
+    viewController.addDashboard(dashboard)
+    
+    self.cardOnFileRouting = router
+    attachChild(router)
+  }
+  
 }

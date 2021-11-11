@@ -2,6 +2,7 @@ import ModernRIBs
 
 protocol FinanceHomeRouting: ViewableRouting {
   func attachSuperPayDashBoard()
+  func attachCardOnFileDashboard()
 }
 
 protocol FinanceHomePresentable: Presentable {
