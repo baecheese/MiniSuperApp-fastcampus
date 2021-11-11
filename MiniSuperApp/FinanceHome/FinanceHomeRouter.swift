@@ -12,6 +12,7 @@ protocol FinanceHomeViewControllable: ViewControllable {
 final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHomeViewControllable>, FinanceHomeRouting {
   
   private let superPayDashBoardBuildable: SuperPayDashboardBuildable
+  private var superPayRouting: Routing?
   
   // TODO: Constructor inject child builder protocols to allow building children.
   init(
@@ -25,6 +26,7 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
   }
   
   func attachSuperPayDashBoard() {
+    guard nil == superPayRouting else { return } // 같은 자식 riblet을 붙이지 않게 하기 위한 방어로직
     // 자식 riblet을 붙이려면 먼저 builder에 build 메서드를 호출해서 router를 받아와야 한다.
     // 자식 riblet의 listener는 비즈니스 로직을 담당하는 interactor가 된다.
     let router = superPayDashBoardBuildable.build(withListener: interactor)
@@ -32,5 +34,9 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
     // 이 화면은 present할 것이 아닌 FinanceViewController에 subview로 넣어줄 것
     let dashboard = router.viewControllable
     viewController.addDashboard(dashboard)
+    
+    self.superPayRouting = router
+    // 자식 riblet을 붙임
+    attachChild(router)
   }
 }
