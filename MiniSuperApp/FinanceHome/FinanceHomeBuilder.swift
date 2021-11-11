@@ -7,7 +7,21 @@ protocol FinanceHomeDependency: Dependency {
 
 final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency {
   
-  // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+  // 자식 riblet은 readonly 하도록
+  var balance: ReadOnlyCurrentValuePublisher<Double> {
+    balancePublisher
+  }
+  
+  private let balancePublisher: CurrentValuePublisher<Double>
+  
+  init(
+    dependency: FinanceHomeDependency,
+    balance: CurrentValuePublisher<Double>
+  ) {
+    self.balancePublisher = balance
+    super.init(dependency: dependency)
+  }
+  
 }
 
 // MARK: - Builder
@@ -23,10 +37,14 @@ final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHomeBuild
   }
   
   func build(withListener listener: FinanceHomeListener) -> FinanceHomeRouting {
+    let balancePyblisher = CurrentValuePublisher<Double>(0)
     // riblet의 component는 riblet에 필요한 객체를 담는 바구니
     // 이 component는 자식 riblet이 필요한 것도 담는다.
     // 때문에 자식인 SuperPayDashboardDependency를 부모 FinanceHomeComponent가 상속 받음
-    let component = FinanceHomeComponent(dependency: dependency)
+    let component = FinanceHomeComponent(
+      dependency: dependency,
+      balance: balancePyblisher
+    )
     let viewController = FinanceHomeViewController()
     let interactor = FinanceHomeInteractor(presenter: viewController)
     interactor.listener = listener
