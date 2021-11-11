@@ -50,4 +50,13 @@ final class FinanceHomeViewController: UIViewController, FinanceHomePresentable,
       // stackview는 item이 늘어날 때마다 높이가 달라질 거라 bottom은 추가하지 않음
     ])
   }
+  
+  func addDashboard(_ view: ViewControllable) {
+    let vc = view.uiviewController
+    
+    addChild(vc)
+    stackView.addArrangedSubview(vc.view)
+    vc.didMove(toParent: self)//lifecycle을 유지하기 위함
+  }
+  
 }

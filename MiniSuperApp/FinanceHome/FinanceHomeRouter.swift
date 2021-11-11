@@ -6,7 +6,7 @@ protocol FinanceHomeInteractable: Interactable, SuperPayDashboardListener {
 }
 
 protocol FinanceHomeViewControllable: ViewControllable {
-  // TODO: Declare methods the router invokes to manipulate the view hierarchy.
+  func addDashboard(_ view: ViewControllable)
 }
 
 final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHomeViewControllable>, FinanceHomeRouting {
@@ -29,5 +29,8 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
     // 자식 riblet의 listener는 비즈니스 로직을 담당하는 interactor가 된다.
     let router = superPayDashBoardBuildable.build(withListener: interactor)
     
+    // 이 화면은 present할 것이 아닌 FinanceViewController에 subview로 넣어줄 것
+    let dashboard = router.viewControllable
+    viewController.addDashboard(dashboard)
   }
 }
