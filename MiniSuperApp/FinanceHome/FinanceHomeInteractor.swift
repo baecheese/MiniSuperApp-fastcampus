@@ -1,7 +1,7 @@
 import ModernRIBs
 
 protocol FinanceHomeRouting: ViewableRouting {
-  // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
+  func attachSuperPayDashBoard()
 }
 
 protocol FinanceHomePresentable: Presentable {
@@ -13,6 +13,7 @@ protocol FinanceHomeListener: AnyObject {
   // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 
+// MVC에서는 비즈니스로직이 viewDidload에 들어가지만, ribs에서는 ViewController는 그냥 View로만 취급하고, Interactor가 비즈니스 로직이다.
 final class FinanceHomeInteractor: PresentableInteractor<FinanceHomePresentable>, FinanceHomeInteractable, FinanceHomePresentableListener {
   
   weak var router: FinanceHomeRouting?
@@ -27,7 +28,7 @@ final class FinanceHomeInteractor: PresentableInteractor<FinanceHomePresentable>
   
   override func didBecomeActive() {
     super.didBecomeActive()
-    // TODO: Implement business logic here.
+    router?.attachSuperPayDashBoard()
   }
   
   override func willResignActive() {
