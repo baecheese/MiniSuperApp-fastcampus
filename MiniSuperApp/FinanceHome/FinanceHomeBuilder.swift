@@ -33,6 +33,10 @@ final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHomeBuild
     
     let superPayDashboardBuilder = SuperPayDashboardBuilder(dependency: component)
     
-    return FinanceHomeRouter(interactor: interactor, viewController: viewController)
+    return FinanceHomeRouter(
+      interactor: interactor,
+      viewController: viewController,
+      superPayDashBoardBuildable: superPayDashboardBuilder
+    )
   }
 }
