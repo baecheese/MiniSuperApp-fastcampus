@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.window = window
     
     let result = AppRootBuilder(dependency: AppComponent()).build()
+    // launchRouter는 앱 맨 처음 riblet에만 사용 (부모 riblet이 없어서)
     self.launchRouter = result.launchRouter
     self.urlHandler = result.urlHandler
     launchRouter?.launch(from: window)

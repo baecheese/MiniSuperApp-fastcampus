@@ -26,9 +26,11 @@ final class AppRootInteractor: PresentableInteractor<AppRootPresentable>, AppRoo
     presenter.listener = self
   }
   
+  // MVC의 ViewDidLoad와 비슷한 역할
+  // riblet이 처음 tree에 붙여질 때, 부모에게 acttach가 되어 활성화될 때 didBecomeActive이 불린다.
   override func didBecomeActive() {
     super.didBecomeActive()
-    
+    // 앱이 로딩이 되고, 앱 root를 붙이자마자 router에 attachTabs가 불려서 앱의 tab들을 만들어주는 것
     router?.attachTabs()
   }
   
