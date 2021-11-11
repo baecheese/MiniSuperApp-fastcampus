@@ -68,6 +68,7 @@ final class SuperPayDashboardViewController: UIViewController, SuperPayDashboard
     label.translatesAutoresizingMaskIntoConstraints = false
     label.font = .systemFont(ofSize: 22.0, weight: .semibold)
     label.textColor = .white
+    // 변화가 잦고, 앱 여러 곳에서 사용해야하는 "잔액" 과 같은 컨텐츠는 Stream을 이용하는 것이 좋다.
     label.text = "10,000"
     return label
   }()
