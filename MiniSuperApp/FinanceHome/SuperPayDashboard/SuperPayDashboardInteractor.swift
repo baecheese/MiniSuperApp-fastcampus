@@ -6,6 +6,7 @@
 //
 
 import ModernRIBs
+import Combine
 
 protocol SuperPayDashboardRouting: ViewableRouting {
   // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
@@ -13,7 +14,8 @@ protocol SuperPayDashboardRouting: ViewableRouting {
 
 protocol SuperPayDashboardPresentable: Presentable {
   var listener: SuperPayDashboardPresentableListener? { get set }
-  // TODO: Declare methods the interactor can invoke the presenter to present data.
+  
+  func updateBalance(_ balance: String)
 }
 
 protocol SuperPayDashboardListener: AnyObject {
@@ -32,18 +34,24 @@ final class SuperPayDashboardInteractor: PresentableInteractor<SuperPayDashboard
   
   private let dependency: SuperPayDashboardInteractorDependency
   
+  private var cancelables: Set<AnyCancellable>
+  
   init(
     presenter: SuperPayDashboardPresentable,
     dependency: SuperPayDashboardInteractorDependency
   ) {
     self.dependency = dependency
+    self.cancelables = .init()
     super.init(presenter: presenter)
     presenter.listener = self
   }
   
   override func didBecomeActive() {
     super.didBecomeActive()
-    // TODO: Implement business logic here.
+    dependency.balance.sink { [weak self] balance in
+      // interactor에서 ui 업데이트 할 때는 presenter를 이용
+      self?.presenter.updateBalance(String(balance))
+    }.store(in: &cancelables)
   }
   
   override func willResignActive() {
