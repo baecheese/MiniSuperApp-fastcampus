@@ -7,6 +7,7 @@
 
 import ModernRIBs
 import Combine
+import Foundation
 
 protocol SuperPayDashboardRouting: ViewableRouting {
   // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
@@ -25,6 +26,7 @@ protocol SuperPayDashboardListener: AnyObject {
 // 추가되는 사항에 유연하게 대응하기 위해 init인자로 다 넣지 않고, 이렇게 protocol 내에서 추가한다.
 protocol SuperPayDashboardInteractorDependency {
   var balance: ReadOnlyCurrentValuePublisher<Double> { get }
+  var balanceFormatter: NumberFormatter { get }
 }
 
 final class SuperPayDashboardInteractor: PresentableInteractor<SuperPayDashboardPresentable>, SuperPayDashboardInteractable, SuperPayDashboardPresentableListener {
@@ -49,8 +51,9 @@ final class SuperPayDashboardInteractor: PresentableInteractor<SuperPayDashboard
   override func didBecomeActive() {
     super.didBecomeActive()
     dependency.balance.sink { [weak self] balance in
-      // interactor에서 ui 업데이트 할 때는 presenter를 이용
-      self?.presenter.updateBalance(String(balance))
+      self?.dependency.balanceFormatter.string(from: NSNumber(value: balance)).map ({
+        self?.presenter.updateBalance($0)
+      })
     }.store(in: &cancelables)
   }
   
