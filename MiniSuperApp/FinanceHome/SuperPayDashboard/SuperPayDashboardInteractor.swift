@@ -36,7 +36,7 @@ final class SuperPayDashboardInteractor: PresentableInteractor<SuperPayDashboard
   
   private let dependency: SuperPayDashboardInteractorDependency
   
-  private var cancelables: Set<AnyCancellable>
+  private var cancelables: Set<AnyCancellable> // ??
   
   init(
     presenter: SuperPayDashboardPresentable,
