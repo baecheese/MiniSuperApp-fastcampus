@@ -83,6 +83,11 @@ final class CardOnFileDashboardViewController: UIViewController, CardOnFileDashb
     headerStackView.addArrangedSubview(titleLabel)
     headerStackView.addArrangedSubview(seeAllButton)
     
+    // 확인용 임시 생성
+    let paymentView = PaymentMethodView()
+    paymentView.translatesAutoresizingMaskIntoConstraints = false
+    
+    cardOnFileStackView.addArrangedSubview(paymentView)
     cardOnFileStackView.addArrangedSubview(addMethodButton)
     
     NSLayoutConstraint.activate([
@@ -95,7 +100,8 @@ final class CardOnFileDashboardViewController: UIViewController, CardOnFileDashb
         cardOnFileStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20.0),
         cardOnFileStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         
-        addMethodButton.heightAnchor.constraint(equalToConstant: 60.0)
+        addMethodButton.heightAnchor.constraint(equalToConstant: 60.0),
+        paymentView.heightAnchor.constraint(equalToConstant: 60.0)
     ])
   }
   
