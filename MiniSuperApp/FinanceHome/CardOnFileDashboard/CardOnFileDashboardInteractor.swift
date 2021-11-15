@@ -18,8 +18,9 @@ protocol CardOnFileDashboardPresentable: Presentable {
   func update(with viewModels: [PaymentMethodViewModel])
 }
 
+// 부모 riblet에게 어떤 이벤트가 발생했다는 것을 알릴 수 있다.
 protocol CardOnFileDashboardListener: AnyObject {
-  // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+  func cardOnFileDashboardDidTapAddPaymentMethod()
 }
 
 protocol CardOnFileDashboardInteractorDependency {
@@ -62,4 +63,11 @@ final class CardOnFileDashboardInteractor: PresentableInteractor<CardOnFileDashb
     cancellables.forEach { $0.cancel() }
     cancellables.removeAll()
   }
+  
+  func didTapAddPaymentMethod() {
+    // 강사는 CardOnFileDashboard riblet 보다 부모의 riblet에서 화면이 불리는 것을 선택
+    // riblet 끼리의 통신은 interactor로 한다.
+    listener?.cardOnFileDashboardDidTapAddPaymentMethod()
+  }
+  
 }

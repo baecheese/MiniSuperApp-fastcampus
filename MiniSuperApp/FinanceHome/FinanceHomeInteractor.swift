@@ -37,4 +37,8 @@ final class FinanceHomeInteractor: PresentableInteractor<FinanceHomePresentable>
     super.willResignActive()
     // TODO: Pause any business logic.
   }
+  
+  func cardOnFileDashboardDidTapAddPaymentMethod() {
+    
+  }
 }
