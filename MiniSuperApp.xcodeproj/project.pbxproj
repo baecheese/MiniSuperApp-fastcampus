@@ -21,6 +21,7 @@
 		992815B2273D1C5500ED077C /* CardOnFileDashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992815AE273D1C5500ED077C /* CardOnFileDashboardInteractor.swift */; };
 		992815B5273E2B4100ED077C /* AddPaymentMethodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992815B4273E2B4100ED077C /* AddPaymentMethodButton.swift */; };
 		992815B7273E2F2200ED077C /* PaymentMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992815B6273E2F2200ED077C /* PaymentMethodView.swift */; };
+		992815B927422B3A00ED077C /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992815B827422B3A00ED077C /* PaymentMethod.swift */; };
 		F57EBE542738468700FE9319 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EBE512738468700FE9319 /* UIImage+Utils.swift */; };
 		F57EBE552738468700FE9319 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EBE522738468700FE9319 /* Array+Utils.swift */; };
 		F57EBE562738468700FE9319 /* UITableView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EBE532738468700FE9319 /* UITableView+Utils.swift */; };
@@ -74,6 +75,7 @@
 		992815AE273D1C5500ED077C /* CardOnFileDashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOnFileDashboardInteractor.swift; sourceTree = "<group>"; };
 		992815B4273E2B4100ED077C /* AddPaymentMethodButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentMethodButton.swift; sourceTree = "<group>"; };
 		992815B6273E2F2200ED077C /* PaymentMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodView.swift; sourceTree = "<group>"; };
+		992815B827422B3A00ED077C /* PaymentMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		F57EBE512738468700FE9319 /* UIImage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		F57EBE522738468700FE9319 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
 		F57EBE532738468700FE9319 /* UITableView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Utils.swift"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				992815AC273D1C5500ED077C /* CardOnFileDashboardViewController.swift */,
 				992815AD273D1C5500ED077C /* CardOnFileDashboardBuilder.swift */,
 				992815AE273D1C5500ED077C /* CardOnFileDashboardInteractor.swift */,
+				992815B827422B3A00ED077C /* PaymentMethod.swift */,
 			);
 			path = CardOnFileDashboard;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				F5829F7726DB34AA00BFA8CD /* AppRootInteractor.swift in Sources */,
 				F5EAA22D270B3A4500EF2B70 /* RideTypeView.swift in Sources */,
 				992815AF273D1C5500ED077C /* CardOnFileDashboardRouter.swift in Sources */,
+				992815B927422B3A00ED077C /* PaymentMethod.swift in Sources */,
 				992815A0273BC30900ED077C /* SuperPayDashboardInteractor.swift in Sources */,
 				F5EAA219270B395900EF2B70 /* HomeWidgetView.swift in Sources */,
 				992815A9273D0EC100ED077C /* Formatter.swift in Sources */,
