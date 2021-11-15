@@ -62,11 +62,13 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
   func attachAddPaymentMethod() {
     guard nil == addPaymentMethodRouting else { return }
     let router = addPaymentMethodBuildable.build(withListener: interactor)
-    
+    viewControllable.present(router.viewControllable, animated: true, completion: nil)
+    addPaymentMethodRouting = router
+    attachChild(router)
   }
   
   func dettachAddPaymentMethod() {
-    <#code#>
+    
   }
   
 }
