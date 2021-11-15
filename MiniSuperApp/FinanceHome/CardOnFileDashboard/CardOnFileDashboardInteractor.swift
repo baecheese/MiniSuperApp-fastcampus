@@ -58,6 +58,8 @@ final class CardOnFileDashboardInteractor: PresentableInteractor<CardOnFileDashb
   
   override func willResignActive() {
     super.willResignActive()
-    // TODO: Pause any business logic.
+    // didBecomeActive 내에 로직에서 캡쳐되어있던 method 로직들이 Resign 될 때 모두 사라질 수 있도록 한다.
+    cancellables.forEach { $0.cancel() }
+    cancellables.removeAll()
   }
 }
