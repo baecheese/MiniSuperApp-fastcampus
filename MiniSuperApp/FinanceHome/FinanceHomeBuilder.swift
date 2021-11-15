@@ -5,7 +5,7 @@ protocol FinanceHomeDependency: Dependency {
   // created by this RIB.
 }
 
-final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency {
+final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency, AddPaymentMethodDependency {
   
   var cardOnFileRepository: CardOnFileRepository
   // 자식 riblet은 readonly 하도록
@@ -53,12 +53,14 @@ final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHomeBuild
     
     let superPayDashboardBuilder = SuperPayDashboardBuilder(dependency: component)
     let cardOnFileDashboardBuilder = CardOnFileDashboardBuilder(dependency: component)
+    let addPaymentMethodBuilder = AddPaymentMethodBuilder(dependency: component)
     
     return FinanceHomeRouter(
       interactor: interactor,
       viewController: viewController,
       superPayDashBoardBuildable: superPayDashboardBuilder,
-      cardOnFileDashboardBuildable: cardOnFileDashboardBuilder
+      cardOnFileDashboardBuildable: cardOnFileDashboardBuilder,
+      addPaymentMethodBuilable: addPaymentMethodBuilder
     )
   }
 }
