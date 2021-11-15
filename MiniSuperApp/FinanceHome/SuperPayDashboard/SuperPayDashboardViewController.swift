@@ -113,8 +113,8 @@ final class SuperPayDashboardViewController: UIViewController, SuperPayDashboard
       
       cardView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 10.0),
       cardView.heightAnchor.constraint(equalToConstant: 180.0),
-      cardView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:  20.0),
-      cardView.trailingAnchor.constraint(equalTo: headerStackView.trailingAnchor, constant: -20.0),
+      cardView.leadingAnchor.constraint(equalTo: headerStackView.leadingAnchor, constant:  0.0),
+      cardView.trailingAnchor.constraint(equalTo: headerStackView.trailingAnchor, constant: 0.0),
       cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20.0),
       
       balanceStackView.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
