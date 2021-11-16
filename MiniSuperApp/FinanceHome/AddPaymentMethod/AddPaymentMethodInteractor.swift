@@ -20,14 +20,24 @@ protocol AddPaymentMethodListener: AnyObject {
   func addPaymentMethodDidTapClose()
 }
 
+protocol AddPaymentMethodInteractorDependency {
+  var cardOnFileRepository: CardOnFileRepository { get }
+}
+
 final class AddPaymentMethodInteractor: PresentableInteractor<AddPaymentMethodPresentable>, AddPaymentMethodInteractable, AddPaymentMethodPresentableListener {
   
   weak var router: AddPaymentMethodRouting?
   weak var listener: AddPaymentMethodListener?
   
+  private let dependency: AddPaymentMethodInteractorDependency
+  
   // TODO: Add additional dependencies to constructor. Do not perform any logic
   // in constructor.
-  override init(presenter: AddPaymentMethodPresentable) {
+  init(
+    presenter: AddPaymentMethodPresentable,
+    dependency: AddPaymentMethodInteractorDependency
+  ) {
+    self.dependency = dependency
     super.init(presenter: presenter)
     presenter.listener = self
   }
