@@ -5,11 +5,12 @@ protocol FinanceHomeDependency: Dependency {
   // created by this RIB.
 }
 
-final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency, AddPaymentMethodDependency {
+final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency, AddPaymentMethodDependency, TopupDependency {
   
   var cardOnFileRepository: CardOnFileRepository
   // 자식 riblet은 readonly 하도록
   var balance: ReadOnlyCurrentValuePublisher<Double> { balancePublisher }
+  var topupBaseViewController: ViewControllable
   
   private let balancePublisher: CurrentValuePublisher<Double>
   
@@ -54,13 +55,15 @@ final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHomeBuild
     let superPayDashboardBuilder = SuperPayDashboardBuilder(dependency: component)
     let cardOnFileDashboardBuilder = CardOnFileDashboardBuilder(dependency: component)
     let addPaymentMethodBuilder = AddPaymentMethodBuilder(dependency: component)
+    let topupBuilder = TopupBuilder(dependency: component)
     
     return FinanceHomeRouter(
       interactor: interactor,
       viewController: viewController,
       superPayDashBoardBuildable: superPayDashboardBuilder,
       cardOnFileDashboardBuildable: cardOnFileDashboardBuilder,
-      addPaymentMethodBuilable: addPaymentMethodBuilder
+      addPaymentMethodBuilable: addPaymentMethodBuilder,
+      topupBuilable: topupBuilder
     )
   }
 }
