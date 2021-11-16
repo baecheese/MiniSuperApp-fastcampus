@@ -1,6 +1,6 @@
 import ModernRIBs
 
-protocol FinanceHomeInteractable: Interactable, SuperPayDashboardListener, CardOnFileDashboardListener, AddPaymentMethodListener {
+protocol FinanceHomeInteractable: Interactable, SuperPayDashboardListener, CardOnFileDashboardListener, AddPaymentMethodListener, TopupListener {
   var router: FinanceHomeRouting? { get set }
   var listener: FinanceHomeListener? { get set }
   
@@ -89,11 +89,17 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
   }
 
   func attachTopup() {
-    
+    guard nil == topupRouting else { return }
+    let router = topupBuildable.build(withListener: interactor)
+    topupRouting = router
+    //router.viewControllable >> 이게 안됌 (view less라서)
+    attachChild(router)//그냥 붙여주면 된다.
   }
   
   func dettachTopup() {
-    
+    guard let router = topupRouting else { return }
+    detachChild(router)
+    self.topupRouting = nil
   }
   
   
