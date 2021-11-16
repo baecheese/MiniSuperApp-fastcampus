@@ -10,6 +10,7 @@ import UIKit
 
 protocol AddPaymentMethodPresentableListener: AnyObject {
   func didTapClose()
+  func didTapConfirm(with number: String, cvc: String, expiration: String)
 }
 
 final class AddPaymentMethodViewController: UIViewController, AddPaymentMethodPresentable, AddPaymentMethodViewControllable {
@@ -114,7 +115,10 @@ final class AddPaymentMethodViewController: UIViewController, AddPaymentMethodPr
   }
   
   @objc func didTapAddCard() {
-    
+    guard let number = cardNumberTextfiled.text,
+          let cvc = securityTextfield.text,
+          let expiration = expirationTextfield.text else { return }
+    listener?.didTapConfirm(with: number, cvc: cvc, expiration: expiration)
   }
   
   @objc func didTapClose() {
