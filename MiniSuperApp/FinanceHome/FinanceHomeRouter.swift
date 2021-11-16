@@ -22,16 +22,21 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
   private let addPaymentMethodBuildable: AddPaymentMethodBuildable
   private var addPaymentMethodRouting: Routing?
   
+  private let topupBuildable: TopupBuildable
+  private var topupRouting: Routing?
+  
   init(
     interactor: FinanceHomeInteractable,
     viewController: FinanceHomeViewControllable,
     superPayDashBoardBuildable: SuperPayDashboardBuildable,
     cardOnFileDashboardBuildable: CardOnFileDashboardBuildable,
-    addPaymentMethodBuilable: AddPaymentMethodBuildable
+    addPaymentMethodBuilable: AddPaymentMethodBuildable,
+    topupBuilable: TopupBuildable
   ) {
     self.superPayDashBoardBuildable = superPayDashBoardBuildable
     self.cardOnFileDashboardBuildable = cardOnFileDashboardBuildable
     self.addPaymentMethodBuildable = addPaymentMethodBuilable
+    self.topupBuildable = topupBuilable
     super.init(interactor: interactor, viewController: viewController)
     interactor.router = self
   }
@@ -82,5 +87,14 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
     detachChild(router)
     addPaymentMethodRouting = nil
   }
+
+  func attachTopup() {
+    
+  }
+  
+  func dettachTopup() {
+    
+  }
+  
   
 }
