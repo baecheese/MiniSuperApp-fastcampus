@@ -45,4 +45,8 @@ final class AddPaymentMethodInteractor: PresentableInteractor<AddPaymentMethodPr
   func didTapClose() {
     listener?.addPaymentMethodDidTapClose()
   }
+  
+  func didTapConfirm(with number: String, cvc: String, expiration: String) {
+    
+  }
 }
