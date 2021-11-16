@@ -17,10 +17,12 @@ final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDash
   init(
     dependency: FinanceHomeDependency,
     balance: CurrentValuePublisher<Double>,
-    cardOnFileRepository: CardOnFileRepository
+    cardOnFileRepository: CardOnFileRepository,
+    topupBaseViewController: ViewControllable
   ) {
     self.balancePublisher = balance
     self.cardOnFileRepository = cardOnFileRepository
+    self.topupBaseViewController = topupBaseViewController
     super.init(dependency: dependency)
   }
   
@@ -40,15 +42,18 @@ final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHomeBuild
   
   func build(withListener listener: FinanceHomeListener) -> FinanceHomeRouting {
     let balancePyblisher = CurrentValuePublisher<Double>(10000)
+    
+    let viewController = FinanceHomeViewController()
+    
     // riblet의 component는 riblet에 필요한 객체를 담는 바구니
     // 이 component는 자식 riblet이 필요한 것도 담는다.
     // 때문에 자식인 SuperPayDashboardDependency를 부모 FinanceHomeComponent가 상속 받음
     let component = FinanceHomeComponent(
       dependency: dependency,
       balance: balancePyblisher,
-      cardOnFileRepository: CardOnFileRepositoryImp()
+      cardOnFileRepository: CardOnFileRepositoryImp(),
+      topupBaseViewController: viewController
     )
-    let viewController = FinanceHomeViewController()
     let interactor = FinanceHomeInteractor(presenter: viewController)
     interactor.listener = listener
     
