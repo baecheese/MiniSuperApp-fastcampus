@@ -9,9 +9,7 @@ import ModernRIBs
 import UIKit
 
 protocol AddPaymentMethodPresentableListener: AnyObject {
-  // TODO: Declare properties and methods that the view controller can invoke to perform
-  // business logic, such as signIn(). This protocol is implemented by the corresponding
-  // interactor class.
+  func didTapClose()
 }
 
 final class AddPaymentMethodViewController: UIViewController, AddPaymentMethodPresentable, AddPaymentMethodViewControllable {
@@ -120,7 +118,8 @@ final class AddPaymentMethodViewController: UIViewController, AddPaymentMethodPr
   }
   
   @objc func didTapClose() {
-    
+    // 화면을 닫는 액션은 routing 역할이기 때문에 listener에게 전달
+    listener?.didTapClose()
   }
   
 }
