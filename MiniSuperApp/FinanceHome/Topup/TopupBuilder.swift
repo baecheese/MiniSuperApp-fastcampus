@@ -7,18 +7,16 @@
 
 import ModernRIBs
 
+/// topup riblet이 동작하기 위해 필요한 것들을 선언
+/// topup riblet을 띄운 부모가 지정
 protocol TopupDependency: Dependency {
-    // TODO: Make sure to convert the variable into lower-camelcase.
-    var TopupViewController: TopupViewControllable { get }
-    // TODO: Declare the set of dependencies required by this RIB, but won't be
-    // created by this RIB.
+  var topupBaseViewController: ViewControllable { get }
 }
 
 final class TopupComponent: Component<TopupDependency> {
 
-    // TODO: Make sure to convert the variable into lower-camelcase.
-    fileprivate var TopupViewController: TopupViewControllable {
-        return dependency.TopupViewController
+    fileprivate var topupBaseViewController: ViewControllable {
+        return dependency.topupBaseViewController
     }
 
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
@@ -40,6 +38,6 @@ final class TopupBuilder: Builder<TopupDependency>, TopupBuildable {
         let component = TopupComponent(dependency: dependency)
         let interactor = TopupInteractor()
         interactor.listener = listener
-        return TopupRouter(interactor: interactor, viewController: component.TopupViewController)
+        return TopupRouter(interactor: interactor, viewController: component.topupBaseViewController)
     }
 }
