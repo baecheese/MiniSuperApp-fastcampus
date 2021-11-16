@@ -17,16 +17,21 @@ protocol FinanceHomeListener: AnyObject {
 }
 
 // MVC에서는 비즈니스로직이 viewDidload에 들어가지만, ribs에서는 ViewController는 그냥 View로만 취급하고, Interactor가 비즈니스 로직이다.
-final class FinanceHomeInteractor: PresentableInteractor<FinanceHomePresentable>, FinanceHomeInteractable, FinanceHomePresentableListener {
+// UIAdaptivePresentationControllerDelegate를 직접 상속받는 대신에 어뎁터로 감싸서 쓸어내려서 dismiss하기 액션을 콜백 받을 수 있도록 한다.
+final class FinanceHomeInteractor: PresentableInteractor<FinanceHomePresentable>, FinanceHomeInteractable, FinanceHomePresentableListener, AdaptivePresentationControllerDelegate {
   
   weak var router: FinanceHomeRouting?
   weak var listener: FinanceHomeListener?
   
+  let presentationDelegateProxy: AdaptivePresentationControllerDelegateProxy
+  
   // TODO: Add additional dependencies to constructor. Do not perform any logic
   // in constructor.
   override init(presenter: FinanceHomePresentable) {
+    self.presentationDelegateProxy = AdaptivePresentationControllerDelegateProxy()
     super.init(presenter: presenter)
     presenter.listener = self
+    self.presentationDelegateProxy.delegate = self
   }
   
   override func didBecomeActive() {
@@ -38,6 +43,10 @@ final class FinanceHomeInteractor: PresentableInteractor<FinanceHomePresentable>
   override func willResignActive() {
     super.willResignActive()
     // TODO: Pause any business logic.
+  }
+  
+  func presentationControllerDidDismiss() {
+    router?.dettachAddPaymentMethod()
   }
   
   // MARK:- CardOnFileDashboardListsenr
