@@ -69,6 +69,10 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
     attachChild(router)
   }
   
+  /// 닫기 액션을 구현해주지 않으면
+  /// 끌어내려서 dismiss 한 후에 다시 창을 켤 수 없게 된다. (nil == addPaymentMethodRouting 방어로직에 걸림)
+  /// ribs의 장점은 present를 했던 부모가 자식을 책임지도 닫도록 한다.
+  /// ** 참고: vc이 자기자신을 dismiss하는 구조는 재사용하기에 좋지 않다. 부모가 자식 vc의 life cycle을 전적으로 관리할 수 없기 때문이다.
   func dettachAddPaymentMethod() {
     
   }
