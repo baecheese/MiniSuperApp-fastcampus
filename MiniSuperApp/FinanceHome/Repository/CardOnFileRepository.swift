@@ -19,6 +19,7 @@ protocol CardOnFileRepository {
 }
 
 final class CardOnFileRepositoryImp: CardOnFileRepository {
+  
   var cardOnFile: ReadOnlyCurrentValuePublisher<[PaymentMethod]> { paymentMethodsSubject }
   
   /// HARD CODING - temp data
@@ -32,6 +33,13 @@ final class CardOnFileRepositoryImp: CardOnFileRepository {
   ])
   
   
+  func addCard(info: AddPaymentMethodInfo) -> AnyPublisher<PaymentMethod, Error> {
+    let paymentMethod = PaymentMethod(id: "00", name: "new temp card", digits: "\(info.number.suffix(4))", color: "", isPrimary: false)
+    var new = paymentMethodsSubject.value
+    new.append(paymentMethod)
+    paymentMethodsSubject.send(new)
+    return Just(paymentMethod).setFailureType(to: Error.self).eraseToAnyPublisher()
+  }
   
 }
 
