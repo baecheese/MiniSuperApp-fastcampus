@@ -59,4 +59,9 @@ final class FinanceHomeInteractor: PresentableInteractor<FinanceHomePresentable>
     router?.dettachAddPaymentMethod()
   }
   
+  // 카드 추가 성공 시, 화면 dettach
+  func addPaymentMethodDidAddCard(paymentMethod: PaymentMethod) {
+    router?.dettachAddPaymentMethod()
+  }
+  
 }
