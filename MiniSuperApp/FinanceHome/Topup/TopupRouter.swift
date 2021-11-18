@@ -7,9 +7,11 @@
 
 import ModernRIBs
 
-protocol TopupInteractable: Interactable {
+protocol TopupInteractable: Interactable, AddPaymentMethodListener {
   var router: TopupRouting? { get set }
   var listener: TopupListener? { get set }
+  
+  var presentationDelegateProxy: AdaptivePresentationControllerDelegateProxy { get }
 }
 
 protocol TopupViewControllable: ViewControllable {
@@ -19,6 +21,8 @@ protocol TopupViewControllable: ViewControllable {
 }
 
 final class TopupRouter: Router<TopupInteractable>, TopupRouting {
+  
+  private var navigationControllerable: NavigationControllerable?
   
   private let addPaymentMethodBuildable: AddPaymentMethodBuildable
   private var addPaymentMethodRouting: AddPaymentMethodRouting?
@@ -39,19 +43,35 @@ final class TopupRouter: Router<TopupInteractable>, TopupRouting {
     // it may have added to the view hierarchy, when its interactor is deactivated.
   }
   
-  // MARK: - Private
-  
-  private let viewController: ViewControllable
-  
-  
   func attachAddPaymentMethod() {
-    guard addPaymentMethodRouting = nil else { return }
+    guard nil == addPaymentMethodRouting else { return }
+    addPaymentMethodRouting = addPaymentMethodBuildable.build(withListener: interactor)
     
   }
   
   func dettachAddPaymentMethod() {
     
   }
+  
+  private func presentInsideNavigation(_viewController: ViewControllable) {
+    let navigation = NavigationControllerable(root: viewController)
+    navigation.navigationController.presentationController?.delegate = interactor.presentationDelegateProxy
+    self.navigationControllerable = navigation
+    // topup은 자신의 뷰가 없음 - 부모가 보내준 view에 present할 것
+    viewController.present(navigation, animated: true, completion: nil)
+  }
+  
+  private func dismissPresentedNavigation(completion: (() -> Void)?) {
+    guard nil != self.navigationControllerable else { return }
+    viewController.dismiss(completion: completion)
+  }
+  
+  
+  // MARK: - Private
+  
+  private let viewController: ViewControllable
+  
+  
   
   
 }
