@@ -45,16 +45,21 @@ final class TopupRouter: Router<TopupInteractable>, TopupRouting {
   
   func attachAddPaymentMethod() {
     guard nil == addPaymentMethodRouting else { return }
-    addPaymentMethodRouting = addPaymentMethodBuildable.build(withListener: interactor)
-    
+    let router = addPaymentMethodBuildable.build(withListener: interactor)
+    presentInsideNavigation(router.viewControllable)
+    attachChild(router)
+    addPaymentMethodRouting = router
   }
   
   func dettachAddPaymentMethod() {
-    
+    guard let router = addPaymentMethodRouting else { return }
+    dismissPresentedNavigation(completion: nil)
+    detachChild(router)
+    addPaymentMethodRouting = nil
   }
   
-  private func presentInsideNavigation(_viewController: ViewControllable) {
-    let navigation = NavigationControllerable(root: viewController)
+  private func presentInsideNavigation(_ viewControllable: ViewControllable) {
+    let navigation = NavigationControllerable(root: viewControllable)
     navigation.navigationController.presentationController?.delegate = interactor.presentationDelegateProxy
     self.navigationControllerable = navigation
     // topup은 자신의 뷰가 없음 - 부모가 보내준 view에 present할 것
