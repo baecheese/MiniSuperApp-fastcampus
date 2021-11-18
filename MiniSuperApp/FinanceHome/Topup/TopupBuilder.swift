@@ -14,7 +14,7 @@ protocol TopupDependency: Dependency {
   var cardOnFileRepository: CardOnFileRepository { get }
 }
 
-final class TopupComponent: Component<TopupDependency>, TopupInteractorDependency {
+final class TopupComponent: Component<TopupDependency>, TopupInteractorDependency, AddPaymentMethodDependency {
   var cardOnFileRepository: CardOnFileRepository {
     dependency.cardOnFileRepository
   }
@@ -39,6 +39,13 @@ final class TopupBuilder: Builder<TopupDependency>, TopupBuildable {
     let component = TopupComponent(dependency: dependency)
     let interactor = TopupInteractor(dependency: component)
     interactor.listener = listener
-    return TopupRouter(interactor: interactor, viewController: component.topupBaseViewController)
+    
+    let addPaymentMethodBuilder = AddPaymentMethodBuilder(dependency: component)
+    
+    return TopupRouter(
+      interactor: interactor,
+      viewController: component.topupBaseViewController,
+      addPaymentMethodBuildable: addPaymentMethodBuilder
+    )
   }
 }
