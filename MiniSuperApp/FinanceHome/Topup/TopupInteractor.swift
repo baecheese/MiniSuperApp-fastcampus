@@ -9,7 +9,9 @@ import ModernRIBs
 
 protocol TopupRouting: Routing {
   func cleanupViews()
-  // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
+  
+  func attachAddPaymentMethod()
+  func dettachAddPaymentMethod()
 }
 
 protocol TopupListener: AnyObject {
@@ -35,7 +37,12 @@ final class TopupInteractor: Interactor, TopupInteractable {
   
   override func didBecomeActive() {
     super.didBecomeActive()
-    // 카드에 갯수에 따라 다른 화면을 띄우는 로직
+    if dependency.cardOnFileRepository.cardOnFile.value.isEmpty {
+      // 카드 추가 화면
+      router?.attachAddPaymentMethod()
+    } else {
+      // 금액 입력 화면
+    }
   }
   
   override func willResignActive() {
