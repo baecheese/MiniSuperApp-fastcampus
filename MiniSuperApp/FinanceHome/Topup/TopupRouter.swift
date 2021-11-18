@@ -38,9 +38,13 @@ final class TopupRouter: Router<TopupInteractable>, TopupRouting {
     interactor.router = self
   }
   
+  /// 뷰가 있는 riblet은 close 시, 떠있던 화면을 dimiss시키는 건 부모가 하는 역할
+  /// viewless riblet은 부모가 직접 띄운 창이 아니기 때문에 자신의 역할이 끝났을 때 스스로 view를 dismiss 시켜줘야 한다.
+  /// ineratcor의 willResignActive()에서 불림
   func cleanupViews() {
-    // TODO: Since this router does not own its view, it needs to cleanup the views
-    // it may have added to the view hierarchy, when its interactor is deactivated.
+    guard nil != viewController.uiviewController.presentationController,
+          nil != navigationControllerable else { return }
+    navigationControllerable?.dismiss(completion: nil)
   }
   
   func attachAddPaymentMethod() {
