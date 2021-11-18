@@ -22,17 +22,22 @@ protocol TopupInteractorDependency {
   var cardOnFileRepository: CardOnFileRepository { get }
 }
 
-final class TopupInteractor: Interactor, TopupInteractable {
+final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentationControllerDelegate {
   
   weak var router: TopupRouting?
   weak var listener: TopupListener?
   
   private let dependency: TopupInteractorDependency
   
+  let presentationDelegateProxy: AdaptivePresentationControllerDelegateProxy
+  
   init(
     dependency: TopupInteractorDependency
   ) {
+    self.presentationDelegateProxy = AdaptivePresentationControllerDelegateProxy()
     self.dependency = dependency
+    super.init()
+    self.presentationDelegateProxy.delegate = self
   }
   
   override func didBecomeActive() {
@@ -51,4 +56,17 @@ final class TopupInteractor: Interactor, TopupInteractable {
     router?.cleanupViews()
     // TODO: Pause any business logic.
   }
+  
+  func presentationControllerDidDismiss() {
+    <#code#>
+  }
+  
+  func addPaymentMethodDidTapClose() {
+    <#code#>
+  }
+  
+  func addPaymentMethodDidAddCard(paymentMethod: PaymentMethod) {
+    <#code#>
+  }
+  
 }
