@@ -46,6 +46,7 @@ final class CardOnFileViewController: UIViewController, CardOnFilePresentable, C
     view.backgroundColor = .white
     view.addSubview(tableView)
     
+    // custom navigation back button
     setupNavigationItem(with: .back, target: self, action: #selector(didTapClose))
     
     NSLayoutConstraint.activate([
