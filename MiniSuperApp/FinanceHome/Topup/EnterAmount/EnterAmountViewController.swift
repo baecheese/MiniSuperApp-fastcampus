@@ -77,13 +77,7 @@ final class EnterAmountViewController: UIViewController, EnterAmountPresentable,
     title = "충전하기"
     view.backgroundColor = .backgroundColor
     
-    
-    navigationItem.leftBarButtonItem = UIBarButtonItem(
-      image: UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18.0, weight: .semibold)),
-      style: .plain,
-      target: self,
-      action: #selector(didTapClose)
-    )
+    setCloseNavigationItem(target: self, action: #selector(didTapClose))
     
     view.addSubview(selectedPaymentMethodView)
     view.addSubview(enterAmountWidget)
