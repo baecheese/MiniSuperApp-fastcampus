@@ -7,7 +7,7 @@
 
 import ModernRIBs
 
-protocol TopupInteractable: Interactable, AddPaymentMethodListener, EnterAmountListener {
+protocol TopupInteractable: Interactable, AddPaymentMethodListener, EnterAmountListener, CardOnFileListener {
   var router: TopupRouting? { get set }
   var listener: TopupListener? { get set }
   
@@ -30,15 +30,20 @@ final class TopupRouter: Router<TopupInteractable>, TopupRouting {
   private let enterAmountBuildable: EnterAmountBuildable
   private var enterAmountRouting: EnterAmountRouting?
   
+  private let cardOnFileBuildable: CardOnFileBuildable
+  private var cardOnFileRouting: CardOnFileRouting?
+  
   init(
     interactor: TopupInteractable,
     viewController: ViewControllable,
     addPaymentMethodBuildable: AddPaymentMethodBuildable,
-    enterAmountBuildable: EnterAmountBuildable
+    enterAmountBuildable: EnterAmountBuildable,
+    cardOnFileBuidable: CardOnFileBuildable
   ) {
     self.viewController = viewController
     self.addPaymentMethodBuildable = addPaymentMethodBuildable
     self.enterAmountBuildable = enterAmountBuildable
+    self.cardOnFileBuildable = cardOnFileBuidable
     super.init(interactor: interactor)
     interactor.router = self
   }
@@ -82,6 +87,22 @@ final class TopupRouter: Router<TopupInteractable>, TopupRouting {
     detachChild(router)
     enterAmountRouting = nil
   }
+  
+  func attachCardOnFile() {
+    guard nil == cardOnFileRouting else { return }
+    let router = cardOnFileBuildable.build(withListener: interactor)
+    attachChild(router)
+    navigationControllerable?.pushViewController(router.viewControllable, animated: true)
+    cardOnFileRouting = router
+  }
+  
+  func dettachCardOnFile() {
+    guard let router = cardOnFileRouting else { return }
+    navigationControllerable?.popViewController(animated: true)
+    detachChild(router)
+    cardOnFileRouting = nil
+  }
+  
   
   private func presentInsideNavigation(_ viewControllable: ViewControllable) {
     let navigation = NavigationControllerable(root: viewControllable)
