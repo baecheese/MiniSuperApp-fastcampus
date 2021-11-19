@@ -74,4 +74,10 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
     
   }
   
+  func enterAmountDidTapClose() {
+    router?.dettachAddPaymentMethod()
+    listener?.topupDidClose()
+  }
+  
+  
 }
