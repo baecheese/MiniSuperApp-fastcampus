@@ -27,13 +27,18 @@ final class TopupRouter: Router<TopupInteractable>, TopupRouting {
   private let addPaymentMethodBuildable: AddPaymentMethodBuildable
   private var addPaymentMethodRouting: AddPaymentMethodRouting?
   
+  private let enterAmountBuildable: EnterAmountBuildable
+  private var enterAmountRouting: EnterAmountRouting?
+  
   init(
     interactor: TopupInteractable,
     viewController: ViewControllable,
-    addPaymentMethodBuildable: AddPaymentMethodBuildable
+    addPaymentMethodBuildable: AddPaymentMethodBuildable,
+    enterAmountBuildable: EnterAmountBuildable
   ) {
     self.viewController = viewController
     self.addPaymentMethodBuildable = addPaymentMethodBuildable
+    self.enterAmountBuildable = enterAmountBuildable
     super.init(interactor: interactor)
     interactor.router = self
   }
@@ -60,6 +65,15 @@ final class TopupRouter: Router<TopupInteractable>, TopupRouting {
     dismissPresentedNavigation(completion: nil)
     detachChild(router)
     addPaymentMethodRouting = nil
+  }
+  
+  
+  func attachEnterAmount() {
+    
+  }
+  
+  func dettachEnterAmount() {
+    
   }
   
   private func presentInsideNavigation(_ viewControllable: ViewControllable) {
