@@ -12,6 +12,9 @@ protocol TopupRouting: Routing {
   
   func attachAddPaymentMethod()
   func dettachAddPaymentMethod()
+  
+  func attachEnterAmount()
+  func dettachEnterAmount()
 }
 
 protocol TopupListener: AnyObject {
@@ -47,6 +50,7 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
       router?.attachAddPaymentMethod()
     } else {
       // 금액 입력 화면
+      router?.attachEnterAmount()
     }
   }
   
