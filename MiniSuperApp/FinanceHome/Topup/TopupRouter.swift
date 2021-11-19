@@ -7,7 +7,7 @@
 
 import ModernRIBs
 
-protocol TopupInteractable: Interactable, AddPaymentMethodListener {
+protocol TopupInteractable: Interactable, AddPaymentMethodListener, EnterAmountListener {
   var router: TopupRouting? { get set }
   var listener: TopupListener? { get set }
   
@@ -69,11 +69,18 @@ final class TopupRouter: Router<TopupInteractable>, TopupRouting {
   
   
   func attachEnterAmount() {
-    
+    guard nil == enterAmountRouting else { return }
+    let router = enterAmountBuildable.build(withListener: interactor)
+    presentInsideNavigation(router.viewControllable)
+    attachChild(router)
+    enterAmountRouting = router
   }
   
   func dettachEnterAmount() {
-    
+    guard let router = enterAmountRouting else { return }
+    dismissPresentedNavigation(completion: nil)
+    detachChild(router)
+    enterAmountRouting = nil
   }
   
   private func presentInsideNavigation(_ viewControllable: ViewControllable) {
