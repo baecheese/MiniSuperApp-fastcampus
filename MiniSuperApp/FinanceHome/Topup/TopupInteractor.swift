@@ -86,4 +86,8 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
     router?.attachCardOnFile()
   }
   
+  func cardOnFileDidTapClose() {
+    router?.dettachCardOnFile()
+  }
+  
 }
