@@ -79,5 +79,8 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
     listener?.topupDidClose()
   }
   
+  func enterAmountDidTapPaymentMethod() {
+    
+  }
   
 }
