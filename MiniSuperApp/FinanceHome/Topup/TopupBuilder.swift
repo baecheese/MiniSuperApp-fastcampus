@@ -53,7 +53,8 @@ final class TopupBuilder: Builder<TopupDependency>, TopupBuildable {
   }
   
   func build(withListener listener: TopupListener) -> TopupRouting {
-    let component = TopupComponent(dependency: dependency)
+    let emptyPaymentMethodStream = CurrentValuePublisher(PaymentMethod(id: "", name: "", digits: "", color: "", isPrimary: false))
+    let component = TopupComponent(dependency: dependency, paymentMethodStream: emptyPaymentMethodStream )
     let interactor = TopupInteractor(dependency: component)
     interactor.listener = listener
     
