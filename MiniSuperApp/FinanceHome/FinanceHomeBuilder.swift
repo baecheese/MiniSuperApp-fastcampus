@@ -8,20 +8,19 @@ protocol FinanceHomeDependency: Dependency {
 final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency, AddPaymentMethodDependency, TopupDependency {
   
   var cardOnFileRepository: CardOnFileRepository
+  var superPayRepostitory: SuperPayRepository
   // 자식 riblet은 readonly 하도록
-  var balance: ReadOnlyCurrentValuePublisher<Double> { balancePublisher }
+  var balance: ReadOnlyCurrentValuePublisher<Double> { superPayRepostitory.blance }
   var topupBaseViewController: ViewControllable
-  
-  private let balancePublisher: CurrentValuePublisher<Double>
   
   init(
     dependency: FinanceHomeDependency,
-    balance: CurrentValuePublisher<Double>,
     cardOnFileRepository: CardOnFileRepository,
+    superPayRepository: SuperPayRepository,
     topupBaseViewController: ViewControllable
   ) {
-    self.balancePublisher = balance
     self.cardOnFileRepository = cardOnFileRepository
+    self.superPayRepostitory = superPayRepository
     self.topupBaseViewController = topupBaseViewController
     super.init(dependency: dependency)
   }
@@ -41,8 +40,6 @@ final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHomeBuild
   }
   
   func build(withListener listener: FinanceHomeListener) -> FinanceHomeRouting {
-    let balancePyblisher = CurrentValuePublisher<Double>(10000)
-    
     let viewController = FinanceHomeViewController()
     
     // riblet의 component는 riblet에 필요한 객체를 담는 바구니
@@ -50,8 +47,8 @@ final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHomeBuild
     // 때문에 자식인 SuperPayDashboardDependency를 부모 FinanceHomeComponent가 상속 받음
     let component = FinanceHomeComponent(
       dependency: dependency,
-      balance: balancePyblisher,
       cardOnFileRepository: CardOnFileRepositoryImp(),
+      superPayRepository: SuperPayRepositoryImp(),
       topupBaseViewController: viewController
     )
     let interactor = FinanceHomeInteractor(presenter: viewController)
