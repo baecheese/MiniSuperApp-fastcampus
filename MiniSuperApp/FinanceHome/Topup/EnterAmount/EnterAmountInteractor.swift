@@ -6,6 +6,7 @@
 //
 
 import ModernRIBs
+import Combine
 
 protocol EnterAmountRouting: ViewableRouting {
   // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
@@ -13,7 +14,8 @@ protocol EnterAmountRouting: ViewableRouting {
 
 protocol EnterAmountPresentable: Presentable {
   var listener: EnterAmountPresentableListener? { get set }
-  // TODO: Declare methods the interactor can invoke the presenter to present data.
+  
+  func updateSelectedPaymentMethod(with viewModel: SelectedPaymentMethodViewModel)
 }
 
 protocol EnterAmountListener: AnyObject {
@@ -32,18 +34,23 @@ final class EnterAmountInteractor: PresentableInteractor<EnterAmountPresentable>
   
   private let dependency: EnterAmountInteractorDependency
   
+  private var cancelables: Set<AnyCancellable>
+  
   init(
     presenter: EnterAmountPresentable,
     dependency: EnterAmountInteractorDependency
   ) {
     self.dependency = dependency
+    self.cancelables = .init()
     super.init(presenter: presenter)
     presenter.listener = self
   }
   
   override func didBecomeActive() {
     super.didBecomeActive()
-    // TODO: Implement business logic here.
+    dependency.selectedPaymentMethod.sink { [weak self] paymentMethod in
+      self?.presenter.updateSelectedPaymentMethod(with: SelectedPaymentMethodViewModel(paymentMethod))
+    }.store(in: &cancelables)
   }
   
   override func willResignActive() {
