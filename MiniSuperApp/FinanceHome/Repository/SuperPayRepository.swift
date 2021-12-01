@@ -26,6 +26,8 @@ class SuperPayRepositoryImp: SuperPayRepository {
       self?.bgQueue.async {
         Thread.sleep(forTimeInterval: 2.0)
         promise(.success(()))
+        let newBlanceSubject = (self?.blanceSubject.value).map { $0 + amount }
+        newBlanceSubject.map { self?.blanceSubject.send($0) }
       }
     }.eraseToAnyPublisher()
   }
