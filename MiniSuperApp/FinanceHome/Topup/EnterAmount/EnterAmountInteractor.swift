@@ -5,6 +5,7 @@
 //  Created by 배지영 on 2021/11/19.
 //
 
+import Foundation
 import ModernRIBs
 import Combine
 
@@ -76,7 +77,10 @@ final class EnterAmountInteractor: PresentableInteractor<EnterAmountPresentable>
     dependency.superPayRepository.topup(
       amount: amount,
       paymentId: dependency.selectedPaymentMethod.value.id
-    ).sink(
+    )
+      // 위의 메소드가 background thread에서 돌아서 결과값은 main thread에서 받아야함 (stopLoading UI update 때문)
+      .receive(on: DispatchQueue.main)
+      .sink(
       receiveCompletion: { [weak self] _ in
         self?.presenter.stopLoading()
       },
