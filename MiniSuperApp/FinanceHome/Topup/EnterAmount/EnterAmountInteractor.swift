@@ -21,14 +21,22 @@ protocol EnterAmountListener: AnyObject {
   func enterAmountDidTapPaymentMethod()//카드 목록 보기
 }
 
+protocol EnterAmountInteractorDependency {
+  var selectedPaymentMethod: ReadOnlyCurrentValuePublisher<PaymentMethod> { get }
+}
+
 final class EnterAmountInteractor: PresentableInteractor<EnterAmountPresentable>, EnterAmountInteractable, EnterAmountPresentableListener {
   
   weak var router: EnterAmountRouting?
   weak var listener: EnterAmountListener?
   
-  // TODO: Add additional dependencies to constructor. Do not perform any logic
-  // in constructor.
-  override init(presenter: EnterAmountPresentable) {
+  private let dependency: EnterAmountInteractorDependency
+  
+  init(
+    presenter: EnterAmountPresentable,
+    dependency: EnterAmountInteractorDependency
+  ) {
+    self.dependency = dependency
     super.init(presenter: presenter)
     presenter.listener = self
   }
