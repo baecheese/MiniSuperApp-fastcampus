@@ -15,12 +15,29 @@ protocol TopupDependency: Dependency {
 }
 
 final class TopupComponent: Component<TopupDependency>, TopupInteractorDependency, AddPaymentMethodDependency, EnterAmountDependency, CardOnFileDependency {
+  
+  var selectedPaymentMethod: ReadOnlyCurrentValuePublisher<PaymentMethod> {
+    paymentMethodStream
+  }
+  
   var cardOnFileRepository: CardOnFileRepository {
     dependency.cardOnFileRepository
   }
+  
   fileprivate var topupBaseViewController: ViewControllable {
     dependency.topupBaseViewController
   }
+  
+  private let paymentMethodStream: CurrentValuePublisher<PaymentMethod>
+  
+  init(
+    dependency: TopupDependency,
+    paymentMethodStream: CurrentValuePublisher<PaymentMethod>
+  ) {
+    self.paymentMethodStream = paymentMethodStream
+    super.init(dependency: dependency)
+  }
+  
 }
 
 // MARK: - Builder
