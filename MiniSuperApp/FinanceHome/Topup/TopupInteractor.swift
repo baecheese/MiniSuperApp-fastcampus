@@ -97,4 +97,12 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
     router?.dettachCardOnFile()
   }
   
+  func cardOnFileDidTapAddNewCard() {
+    <#code#>
+  }
+  
+  func cardOnFileDidSelect(at index: Int) {
+    <#code#>
+  }
+  
 }
