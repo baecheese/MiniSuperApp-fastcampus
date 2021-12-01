@@ -28,7 +28,7 @@ final class TopupComponent: Component<TopupDependency>, TopupInteractorDependenc
     dependency.topupBaseViewController
   }
   
-  private let paymentMethodStream: CurrentValuePublisher<PaymentMethod>
+  let paymentMethodStream: CurrentValuePublisher<PaymentMethod>
   
   init(
     dependency: TopupDependency,
