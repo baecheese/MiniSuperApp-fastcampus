@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9912B65B2757980B007B29B0 /* SuperPayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912B65A2757980B007B29B0 /* SuperPayRepository.swift */; };
 		9928159D273BC30900ED077C /* SuperPayDashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99281599273BC30900ED077C /* SuperPayDashboardRouter.swift */; };
 		9928159E273BC30900ED077C /* SuperPayDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928159A273BC30900ED077C /* SuperPayDashboardViewController.swift */; };
 		9928159F273BC30900ED077C /* SuperPayDashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928159B273BC30900ED077C /* SuperPayDashboardBuilder.swift */; };
@@ -85,6 +86,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9912B65A2757980B007B29B0 /* SuperPayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPayRepository.swift; sourceTree = "<group>"; };
 		99281599273BC30900ED077C /* SuperPayDashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPayDashboardRouter.swift; sourceTree = "<group>"; };
 		9928159A273BC30900ED077C /* SuperPayDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPayDashboardViewController.swift; sourceTree = "<group>"; };
 		9928159B273BC30900ED077C /* SuperPayDashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPayDashboardBuilder.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				992815BB27422BBF00ED077C /* CardOnFileRepository.swift */,
+				9912B65A2757980B007B29B0 /* SuperPayRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				992815E227476D1D00ED077C /* EnterAmountWidget.swift in Sources */,
 				992815C62742529400ED077C /* AddPaymentMethodRouter.swift in Sources */,
 				992815DA2747682000ED077C /* EnterAmountRouter.swift in Sources */,
+				9912B65B2757980B007B29B0 /* SuperPayRepository.swift in Sources */,
 				9928159F273BC30900ED077C /* SuperPayDashboardBuilder.swift in Sources */,
 				F57F6AEB26DB4A2700C0117D /* FinanceHomeInteractor.swift in Sources */,
 				992815B2273D1C5500ED077C /* CardOnFileDashboardInteractor.swift in Sources */,
