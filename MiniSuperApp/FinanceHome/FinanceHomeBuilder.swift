@@ -7,10 +7,10 @@ protocol FinanceHomeDependency: Dependency {
 
 final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency, AddPaymentMethodDependency, TopupDependency {
   
+  var superPayRepository: SuperPayRepository
   var cardOnFileRepository: CardOnFileRepository
-  var superPayRepostitory: SuperPayRepository
   // 자식 riblet은 readonly 하도록
-  var balance: ReadOnlyCurrentValuePublisher<Double> { superPayRepostitory.blance }
+  var balance: ReadOnlyCurrentValuePublisher<Double> { superPayRepository.blance }
   var topupBaseViewController: ViewControllable
   
   init(
@@ -20,7 +20,7 @@ final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDash
     topupBaseViewController: ViewControllable
   ) {
     self.cardOnFileRepository = cardOnFileRepository
-    self.superPayRepostitory = superPayRepository
+    self.superPayRepository = superPayRepository
     self.topupBaseViewController = topupBaseViewController
     super.init(dependency: dependency)
   }
