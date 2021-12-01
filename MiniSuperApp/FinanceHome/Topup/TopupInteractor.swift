@@ -16,7 +16,7 @@ protocol TopupRouting: Routing {
   func attachEnterAmount()
   func dettachEnterAmount()
   
-  func attachCardOnFile()
+  func attachCardOnFile(paymentMethods: [PaymentMethod])
   func dettachCardOnFile()
 }
 
@@ -36,6 +36,10 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
   private let dependency: TopupInteractorDependency
   
   let presentationDelegateProxy: AdaptivePresentationControllerDelegateProxy
+  
+  private var paymentMethods: [PaymentMethod] {
+    dependency.cardOnFileRepository.cardOnFile.value
+  }
   
   init(
     dependency: TopupInteractorDependency
@@ -83,7 +87,8 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
   }
   
   func enterAmountDidTapPaymentMethod() {
-    router?.attachCardOnFile()
+    // topup에서 attach할 때, 필요한 정보 넘겨주는 것이 좋을 것
+    router?.attachCardOnFile(paymentMethods: paymentMethods)
   }
   
   func cardOnFileDidTapClose() {
