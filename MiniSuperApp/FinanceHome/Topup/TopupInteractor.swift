@@ -35,7 +35,7 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
   weak var listener: TopupListener?
   
   private let dependency: TopupInteractorDependency
-  
+   
   let presentationDelegateProxy: AdaptivePresentationControllerDelegateProxy
   
   private var paymentMethods: [PaymentMethod] {
@@ -53,12 +53,13 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
   
   override func didBecomeActive() {
     super.didBecomeActive()
-    if dependency.cardOnFileRepository.cardOnFile.value.isEmpty {
+    if let firstCard = dependency.cardOnFileRepository.cardOnFile.value.first {
+      // 금액 입력 화면
+      dependency.paymentMethodStream.send(firstCard)
+      router?.attachEnterAmount()
+    } else {
       // 카드 추가 화면
       router?.attachAddPaymentMethod()
-    } else {
-      // 금액 입력 화면
-      router?.attachEnterAmount()
     }
   }
   
