@@ -16,11 +16,14 @@ protocol EnterAmountPresentable: Presentable {
   var listener: EnterAmountPresentableListener? { get set }
   
   func updateSelectedPaymentMethod(with viewModel: SelectedPaymentMethodViewModel)
+  func startLoading()
+  func stopLoading()
 }
 
 protocol EnterAmountListener: AnyObject {
   func enterAmountDidTapClose()
   func enterAmountDidTapPaymentMethod()//카드 목록 보기
+  func enterAmountDidFinishTopup()
 }
 
 protocol EnterAmountInteractorDependency {
@@ -68,7 +71,19 @@ final class EnterAmountInteractor: PresentableInteractor<EnterAmountPresentable>
   }
   
   func didTapTopup(with amount: Double) {
+    presenter.startLoading()
     
+    dependency.superPayRepository.topup(
+      amount: amount,
+      paymentId: dependency.selectedPaymentMethod.value.id
+    ).sink(
+      receiveCompletion: { [weak self] _ in
+        self?.presenter.stopLoading()
+      },
+      receiveValue: { [weak self] _ in
+        self?.listener?.enterAmountDidFinishTopup()
+      }
+    ).store(in: &cancelables)
   }
   
   
