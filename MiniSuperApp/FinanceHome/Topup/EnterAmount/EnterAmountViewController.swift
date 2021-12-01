@@ -109,6 +109,7 @@ final class EnterAmountViewController: UIViewController, EnterAmountPresentable,
     listener?.didTapClose()
   }
   
+  /// 충전하기
   @objc
   private func didTapCTAButton() {
     if let amount = enterAmountWidget.text.flatMap(Double.init) {
