@@ -81,7 +81,8 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
   }
   
   func addPaymentMethodDidAddCard(paymentMethod: PaymentMethod) {
-    
+    dependency.paymentMethodStream.send(paymentMethod)
+    router?.attachEnterAmount()// 카드 추가 후에는 충전 금액 입력 페이지로
   }
   
   func enterAmountDidTapClose() {
@@ -110,7 +111,7 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
   }
   
   func enterAmountDidFinishTopup() {
-    listener?.topupDidFinish()    
+    listener?.topupDidFinish()
   }
   
 }
