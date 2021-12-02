@@ -10,7 +10,7 @@ import ModernRIBs
 protocol TopupRouting: Routing {
   func cleanupViews()
   
-  func attachAddPaymentMethod()
+  func attachAddPaymentMethod(closeButtonType: DismissButtonType)
   func dettachAddPaymentMethod()
   
   func attachEnterAmount()
@@ -57,6 +57,7 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
     self.presentationDelegateProxy.delegate = self
   }
   
+  // 첫 로드 시
   override func didBecomeActive() {
     super.didBecomeActive()
     if let firstCard = dependency.cardOnFileRepository.cardOnFile.value.first {
@@ -67,7 +68,7 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
     } else {
       // 카드 추가 화면
       isEnterAmountRoot = false
-      router?.attachAddPaymentMethod()
+      router?.attachAddPaymentMethod(closeButtonType: .close)
     }
   }
   
@@ -114,7 +115,7 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
   }
   
   func cardOnFileDidTapAddNewCard() {
-    router?.attachAddPaymentMethod()
+    router?.attachAddPaymentMethod(closeButtonType: .back)
   }
   
   func cardOnFileDidSelect(at index: Int) {
