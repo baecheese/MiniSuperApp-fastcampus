@@ -1,26 +1,23 @@
 import ModernRIBs
 
 protocol FinanceHomeDependency: Dependency {
-  // TODO: Declare the set of dependencies required by this RIB, but cannot be
-  // created by this RIB.
+  var superPayRepository: SuperPayRepository { get }
+  var cardOnFileRepository: CardOnFileRepository { get }
 }
 
 final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency, AddPaymentMethodDependency, TopupDependency {
   
-  var superPayRepository: SuperPayRepository
-  var cardOnFileRepository: CardOnFileRepository
+  var superPayRepository: SuperPayRepository { dependency.superPayRepository }
+  var cardOnFileRepository: CardOnFileRepository { dependency.cardOnFileRepository }
+  
   // 자식 riblet은 readonly 하도록
   var balance: ReadOnlyCurrentValuePublisher<Double> { superPayRepository.balance }
   var topupBaseViewController: ViewControllable
   
   init(
     dependency: FinanceHomeDependency,
-    cardOnFileRepository: CardOnFileRepository,
-    superPayRepository: SuperPayRepository,
     topupBaseViewController: ViewControllable
   ) {
-    self.cardOnFileRepository = cardOnFileRepository
-    self.superPayRepository = superPayRepository
     self.topupBaseViewController = topupBaseViewController
     super.init(dependency: dependency)
   }
@@ -47,8 +44,6 @@ final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHomeBuild
     // 때문에 자식인 SuperPayDashboardDependency를 부모 FinanceHomeComponent가 상속 받음
     let component = FinanceHomeComponent(
       dependency: dependency,
-      cardOnFileRepository: CardOnFileRepositoryImp(),
-      superPayRepository: SuperPayRepositoryImp(),
       topupBaseViewController: viewController
     )
     let interactor = FinanceHomeInteractor(presenter: viewController)
