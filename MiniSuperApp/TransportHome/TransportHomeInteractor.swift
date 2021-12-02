@@ -3,6 +3,8 @@ import Combine
 import Foundation
 
 protocol TransportHomeRouting: ViewableRouting {
+  func attatchTopup()
+  func dettatchTopup()
 }
 
 protocol TransportHomePresentable: Presentable {
@@ -23,6 +25,9 @@ final class TransportHomeInteractor: PresentableInteractor<TransportHomePresenta
   
   weak var router: TransportHomeRouting?
   weak var listener: TransportHomeListener?
+  
+  // HEAD CODE: 임시 기본 택시 요금
+  private let defaultTaxiPrice: Double = 18000.0
   
   private let dependency: TransportHomeInteractorDependency
   private var cancellable: Set<AnyCancellable>
@@ -55,5 +60,13 @@ final class TransportHomeInteractor: PresentableInteractor<TransportHomePresenta
   
   func didTapBack() {
     listener?.transportHomeDidTapClose()
+  }
+  
+  func didTapRideConfirmButton() {
+    if dependency.superPayBalance.value < defaultTaxiPrice {
+      router?.attatchTopup() 
+    } else {
+      print("SUCCESS")
+    }
   }
 }
