@@ -56,7 +56,6 @@ final class CardOnFileInteractor: PresentableInteractor<CardOnFilePresentable>, 
   }
   
   func didSelectItem(at index: Int) {
-    guard paymentMethods.indices.contains(index) else { return }
     if paymentMethods.count <= index { // 가장 마지막 셀은 카드 추가하기
       listener?.cardOnFileDidTapAddNewCard()
     } else {
