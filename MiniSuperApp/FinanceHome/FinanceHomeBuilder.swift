@@ -10,7 +10,7 @@ final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDash
   var superPayRepository: SuperPayRepository
   var cardOnFileRepository: CardOnFileRepository
   // 자식 riblet은 readonly 하도록
-  var balance: ReadOnlyCurrentValuePublisher<Double> { superPayRepository.blance }
+  var balance: ReadOnlyCurrentValuePublisher<Double> { superPayRepository.balance }
   var topupBaseViewController: ViewControllable
   
   init(

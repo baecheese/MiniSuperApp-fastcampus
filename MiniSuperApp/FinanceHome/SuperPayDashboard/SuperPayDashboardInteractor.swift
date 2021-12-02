@@ -51,7 +51,7 @@ final class SuperPayDashboardInteractor: PresentableInteractor<SuperPayDashboard
   override func didBecomeActive() {
     super.didBecomeActive()
     dependency.balance
-      // superpayRepository에서 blanceSubject.send 해주는 부분이 background thread라서 main thread로 돌려서 받을 것
+      // superpayRepository에서 balanceSubject.send 해주는 부분이 background thread라서 main thread로 돌려서 받을 것
       .receive(on: DispatchQueue.main)
       .sink { [weak self] balance in
       self?.dependency.balanceFormatter.string(from: NSNumber(value: balance)).map ({
