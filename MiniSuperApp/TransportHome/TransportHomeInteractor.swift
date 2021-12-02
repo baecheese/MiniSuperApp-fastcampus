@@ -15,7 +15,7 @@ protocol TransportHomeListener: AnyObject {
 }
 
 protocol TransportHomeInteractorDependency {
-  var superPayBalance: CurrentValuePublisher<Double> { get }
+  var superPayBalance: ReadOnlyCurrentValuePublisher<Double> { get }
 }
 
 final class TransportHomeInteractor: PresentableInteractor<TransportHomePresentable>, TransportHomeInteractable, TransportHomePresentableListener {

@@ -1,9 +1,32 @@
 import ModernRIBs
 
 protocol TransportHomeDependency: Dependency {
+  var cardOnFileRepository: CardOnFileRepository { get }
+  var superPayRepository: SuperPayRepository { get }
 }
 
-final class TransportHomeComponent: Component<TransportHomeDependency> {
+final class TransportHomeComponent: Component<TransportHomeDependency>, TransportHomeInteractorDependency, TopupDependency {
+
+  var superPayBalance: ReadOnlyCurrentValuePublisher<Double> {
+    superPayRepository.balance
+  }
+  
+  var topupBaseViewController: ViewControllable
+  
+  var cardOnFileRepository: CardOnFileRepository {
+    dependency.cardOnFileRepository
+  }
+  var superPayRepository: SuperPayRepository {
+    dependency.superPayRepository
+  }
+  
+  init(
+    dependency: TransportHomeDependency,
+    topupBaseViewController: ViewControllable
+  ) {
+    self.topupBaseViewController = topupBaseViewController
+    super.init(dependency: dependency)
+  }
 
 }
 
@@ -20,12 +43,13 @@ final class TransportHomeBuilder: Builder<TransportHomeDependency>, TransportHom
   }
   
   func build(withListener listener: TransportHomeListener) -> TransportHomeRouting {
-    _ = TransportHomeComponent(dependency: dependency)
-    
     let viewController = TransportHomeViewController()
+    let component = TransportHomeComponent(dependency: dependency, topupBaseViewController: viewController)
     
-    let interactor = TransportHomeInteractor(presenter: viewController)
+    let interactor = TransportHomeInteractor(presenter: viewController, dependency: component)
     interactor.listener = listener
+    
+    let topupBuilder = TopupBuilder(dependency: component)
     
     return TransportHomeRouter(
       interactor: interactor,
