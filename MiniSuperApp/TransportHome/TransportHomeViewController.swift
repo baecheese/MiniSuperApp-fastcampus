@@ -119,6 +119,7 @@ final class TransportHomeViewController: UIViewController, TransportHomePresenta
     return view
   }()
   
+  // 잔고 업데이트
   func setSuperPayBalance(_ balanceText: String) {
     superPayView.setBalanceText("잔고: \(balanceText)원")
   }
