@@ -18,6 +18,8 @@ protocol TopupRouting: Routing {
   
   func attachCardOnFile(paymentMethods: [PaymentMethod])
   func dettachCardOnFile()
+  
+  func popToRoot()
 }
 
 protocol TopupListener: AnyObject {
@@ -39,6 +41,9 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
    
   let presentationDelegateProxy: AdaptivePresentationControllerDelegateProxy
   
+  // 충전 금액 입력 페이지가 루트인지
+  private var isEnterAmountRoot: Bool = false
+  
   private var paymentMethods: [PaymentMethod] {
     dependency.cardOnFileRepository.cardOnFile.value
   }
@@ -55,11 +60,13 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
   override func didBecomeActive() {
     super.didBecomeActive()
     if let firstCard = dependency.cardOnFileRepository.cardOnFile.value.first {
-      // 금액 입력 화면
+      // 충전 금액 입력 화면
+      isEnterAmountRoot = true
       dependency.paymentMethodStream.send(firstCard)
       router?.attachEnterAmount()
     } else {
       // 카드 추가 화면
+      isEnterAmountRoot = false
       router?.attachAddPaymentMethod()
     }
   }
@@ -82,7 +89,12 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
   
   func addPaymentMethodDidAddCard(paymentMethod: PaymentMethod) {
     dependency.paymentMethodStream.send(paymentMethod)
-    router?.attachEnterAmount()// 카드 추가 후에는 충전 금액 입력 페이지로
+    if isEnterAmountRoot {
+      router?.popToRoot()
+    } else {
+      // 카드 추가 후에는 충전 금액 입력 페이지로
+      router?.attachEnterAmount()
+    }
   }
   
   func enterAmountDidTapClose() {

@@ -116,6 +116,10 @@ final class TopupRouter: Router<TopupInteractable>, TopupRouting {
     cardOnFileRouting = nil
   }
   
+  func popToRoot() {
+    navigationControllerable?.popToRoot(animated: true)
+    resetChildRouting()
+  }
   
   private func presentInsideNavigation(_ viewControllable: ViewControllable) {
     let navigation = NavigationControllerable(root: viewControllable)
