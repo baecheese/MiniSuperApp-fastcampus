@@ -72,7 +72,7 @@ final class TopupRouter: Router<TopupInteractable>, TopupRouting {
   
   func dettachAddPaymentMethod() {
     guard let router = addPaymentMethodRouting else { return }
-    dismissPresentedNavigation(completion: nil)
+    navigationControllerable?.popViewController(animated: true)
     detachChild(router)
     addPaymentMethodRouting = nil
   }
