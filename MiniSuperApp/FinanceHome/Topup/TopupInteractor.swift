@@ -100,7 +100,7 @@ final class TopupInteractor: Interactor, TopupInteractable, AdaptivePresentation
   }
   
   func cardOnFileDidTapAddNewCard() {
-    // attach add card
+    router?.attachAddPaymentMethod()
   }
   
   func cardOnFileDidSelect(at index: Int) {
