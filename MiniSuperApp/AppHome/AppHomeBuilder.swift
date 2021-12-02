@@ -1,26 +1,35 @@
 import ModernRIBs
 
-public protocol AppHomeDependency: Dependency {
+protocol AppHomeDependency: Dependency {
+  var cardOnFileRepository: CardOnFileRepository { get }
+  var superPayRepository: SuperPayRepository { get }
 }
 
 final class AppHomeComponent: Component<AppHomeDependency>, TransportHomeDependency {
+  
+  var cardOnFileRepository: CardOnFileRepository {
+    dependency.cardOnFileRepository
+  }
+  var superPayRepository: SuperPayRepository {
+    dependency.superPayRepository
+  }
 }
 
 // MARK: - Builder
 
-public protocol AppHomeBuildable: Buildable {
+protocol AppHomeBuildable: Buildable {
   func build(withListener listener: AppHomeListener) -> ViewableRouting
 }
 
 // Builder는 riblet 객체를 생성하는 역할을 한다.
-public final class AppHomeBuilder: Builder<AppHomeDependency>, AppHomeBuildable {
+final class AppHomeBuilder: Builder<AppHomeDependency>, AppHomeBuildable {
   
-  public override init(dependency: AppHomeDependency) {
+  override init(dependency: AppHomeDependency) {
     super.init(dependency: dependency)
   }
   
   // riblet에 필요한 객체들을 생성
-  public func build(withListener listener: AppHomeListener) -> ViewableRouting {
+  func build(withListener listener: AppHomeListener) -> ViewableRouting {
     // 로직이 추가될 때, 로직을 수행할 때 필요한 객체를 담고 있는 바구니
     let component = AppHomeComponent(dependency: dependency)
     let viewController = AppHomeViewController()
