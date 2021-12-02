@@ -53,7 +53,8 @@ final class TransportHomeBuilder: Builder<TransportHomeDependency>, TransportHom
     
     return TransportHomeRouter(
       interactor: interactor,
-      viewController: viewController
+      viewController: viewController,
+      topupBuilable: topupBuilder
     )
   }
 }

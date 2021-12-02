@@ -69,4 +69,13 @@ final class TransportHomeInteractor: PresentableInteractor<TransportHomePresenta
       print("SUCCESS")
     }
   }
+  
+  func topupDidClose() {
+    router?.dettatchTopup()
+  }
+  
+  func topupDidFinish() {
+    router?.dettatchTopup()
+  }
+  
 }
