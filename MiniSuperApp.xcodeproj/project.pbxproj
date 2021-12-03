@@ -41,6 +41,7 @@
 		992815EF2747795F00ED077C /* CardOnFileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992815EB2747795F00ED077C /* CardOnFileInteractor.swift */; };
 		992815F22747798200ED077C /* CardOnFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992815F02747798200ED077C /* CardOnFileViewController.swift */; };
 		992815F32747798200ED077C /* CardOnFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992815F12747798200ED077C /* CardOnFileCell.swift */; };
+		9963F5492759F58D00365725 /* AddPaymentMethod in Frameworks */ = {isa = PBXBuildFile; productRef = 9963F5482759F58D00365725 /* AddPaymentMethod */; };
 		F57EBE542738468700FE9319 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EBE512738468700FE9319 /* UIImage+Utils.swift */; };
 		F57EBE552738468700FE9319 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EBE522738468700FE9319 /* Array+Utils.swift */; };
 		F57EBE562738468700FE9319 /* UITableView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EBE532738468700FE9319 /* UITableView+Utils.swift */; };
@@ -165,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				992815A5273CFBBD00ED077C /* CombineExt in Frameworks */,
+				9963F5492759F58D00365725 /* AddPaymentMethod in Frameworks */,
 				F5829F6E26DB2DE900BFA8CD /* ModernRIBs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +255,13 @@
 			path = CardOnFile;
 			sourceTree = "<group>";
 		};
+		9963F5472759F58D00365725 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F57F6AD926DB49E500C0117D /* AppHome */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +330,7 @@
 				9963F5422759F2B900365725 /* CX */,
 				F5829F5726DB2BC400BFA8CD /* MiniSuperApp */,
 				F5829F5626DB2BC400BFA8CD /* Products */,
+				9963F5472759F58D00365725 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -417,6 +427,7 @@
 			packageProductDependencies = (
 				F5829F6D26DB2DE900BFA8CD /* ModernRIBs */,
 				992815A4273CFBBD00ED077C /* CombineExt */,
+				9963F5482759F58D00365725 /* AddPaymentMethod */,
 			);
 			productName = SuperRedApp;
 			productReference = F5829F5526DB2BC400BFA8CD /* MiniSuperApp.app */;
@@ -758,6 +769,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 992815A3273CFBBD00ED077C /* XCRemoteSwiftPackageReference "CombineExt" */;
 			productName = CombineExt;
+		};
+		9963F5482759F58D00365725 /* AddPaymentMethod */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AddPaymentMethod;
 		};
 		F5829F6D26DB2DE900BFA8CD /* ModernRIBs */ = {
 			isa = XCSwiftPackageProductDependency;
