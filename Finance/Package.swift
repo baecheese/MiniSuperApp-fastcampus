@@ -29,7 +29,8 @@ let package = Package(
       name: "AddPaymentMethod",
       dependencies: [
         "ModernRIBs",
-        "FinanceEntity"
+        "FinanceEntity",
+        "FinanceRepository"
       ]
     ),
     .target(
