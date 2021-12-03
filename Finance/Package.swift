@@ -31,7 +31,8 @@ let package = Package(
         "ModernRIBs",
         "FinanceEntity",
         "FinanceRepository",
-        .product(name: "RIBsUtil", package: "Platform")
+        .product(name: "RIBsUtil", package: "Platform"),
+        .product(name: "SuperUI", package: "Platform")
       ]
     ),
     .target(
