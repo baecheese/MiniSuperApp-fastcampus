@@ -124,6 +124,11 @@
 		992815EB2747795F00ED077C /* CardOnFileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOnFileInteractor.swift; sourceTree = "<group>"; };
 		992815F02747798200ED077C /* CardOnFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardOnFileViewController.swift; path = Samples/Topup/CardOnFileViewController.swift; sourceTree = SOURCE_ROOT; };
 		992815F12747798200ED077C /* CardOnFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardOnFileCell.swift; path = Samples/Topup/CardOnFileCell.swift; sourceTree = SOURCE_ROOT; };
+		9963F5422759F2B900365725 /* CX */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CX; sourceTree = "<group>"; };
+		9963F5432759F33200365725 /* Finance */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Finance; sourceTree = "<group>"; };
+		9963F5442759F34100365725 /* Transport */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Transport; sourceTree = "<group>"; };
+		9963F5452759F37600365725 /* Profile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Profile; sourceTree = "<group>"; };
+		9963F5462759F39000365725 /* Platform */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Platform; sourceTree = "<group>"; };
 		F57EBE512738468700FE9319 /* UIImage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		F57EBE522738468700FE9319 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
 		F57EBE532738468700FE9319 /* UITableView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Utils.swift"; sourceTree = "<group>"; };
@@ -332,6 +337,11 @@
 		F5829F4C26DB2BC400BFA8CD = {
 			isa = PBXGroup;
 			children = (
+				9963F5462759F39000365725 /* Platform */,
+				9963F5452759F37600365725 /* Profile */,
+				9963F5442759F34100365725 /* Transport */,
+				9963F5432759F33200365725 /* Finance */,
+				9963F5422759F2B900365725 /* CX */,
 				F5829F5726DB2BC400BFA8CD /* MiniSuperApp */,
 				F5829F5626DB2BC400BFA8CD /* Products */,
 			);
