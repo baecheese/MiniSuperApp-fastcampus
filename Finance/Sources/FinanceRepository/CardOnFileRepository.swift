@@ -7,20 +7,21 @@
 
 import Foundation
 import Combine
+import FinanceEntity
 
 /// 서버 API로 호출해서 유저에게 등록된 카드 목록을 가져옴
 /// 그 카드 목록은 data Stream으로 가지고 있음
 /// 카드목록이 필요한 곳에 subscribe를 할 수 있도록 구성
-protocol CardOnFileRepository {
+public protocol CardOnFileRepository {
   var cardOnFile: ReadOnlyCurrentValuePublisher<[PaymentMethod]> { get }
   
   /// 비동기 네트워킹일 것을 고려해서 AnyPyblisher로 return
   func addCard(info: AddPaymentMethodInfo) -> AnyPublisher<PaymentMethod, Error>
 }
 
-final class CardOnFileRepositoryImp: CardOnFileRepository {
+public final class CardOnFileRepositoryImp: CardOnFileRepository {
   
-  var cardOnFile: ReadOnlyCurrentValuePublisher<[PaymentMethod]> { paymentMethodsSubject }
+  public var cardOnFile: ReadOnlyCurrentValuePublisher<[PaymentMethod]> { paymentMethodsSubject }
   
   /// HARD CODING - temp data
   private let paymentMethodsSubject = CurrentValuePublisher<[PaymentMethod]>([
@@ -33,7 +34,7 @@ final class CardOnFileRepositoryImp: CardOnFileRepository {
   ])
   
   
-  func addCard(info: AddPaymentMethodInfo) -> AnyPublisher<PaymentMethod, Error> {
+  public func addCard(info: AddPaymentMethodInfo) -> AnyPublisher<PaymentMethod, Error> {
     let paymentMethod = PaymentMethod(id: "00", name: "new temp card", digits: "\(info.number.suffix(4))", color: "", isPrimary: false)
     var new = paymentMethodsSubject.value
     new.append(paymentMethod)

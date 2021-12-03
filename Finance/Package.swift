@@ -12,9 +12,22 @@ let package = Package(
             name: "AddPaymentMethod",
             targets: ["AddPaymentMethod"]
         ),
+        .library(
+            name: "FinanaceEntity",
+            targets: ["FinanaceEntity"]
+        ),
+        .library(
+            name: "FinanceRepository",
+            targets: ["FinanceRepository"]
+        ),
     ],
     dependencies: [
-      .package(name: "ModernRIBs", url: "https://github.com/DevYeom/ModernRIBs", .exact("1.0.1"))
+      .package(
+        name: "ModernRIBs",
+        url: "https://github.com/DevYeom/ModernRIBs",
+          .exact("1.0.1")
+      ),
+      
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -22,7 +35,19 @@ let package = Package(
         .target(
             name: "AddPaymentMethod",
             dependencies: [
-              "ModernRIBs"
+              "ModernRIBs",
+              "FinanaceEntity"
+            ]
+        ),
+        .target(
+            name: "FinanaceEntity",
+            dependencies: [
+            ]
+        ),
+        .target(
+            name: "FinanceRepository",
+            dependencies: [
+              "FinanaceEntity"
             ]
         )
     ]
