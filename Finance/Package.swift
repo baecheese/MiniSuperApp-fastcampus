@@ -30,7 +30,8 @@ let package = Package(
       dependencies: [
         "ModernRIBs",
         "FinanceEntity",
-        "FinanceRepository"
+        "FinanceRepository",
+        .product(name: "RIBsUtil", package: "Platform")
       ]
     ),
     .target(

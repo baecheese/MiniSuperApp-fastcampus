@@ -8,7 +8,6 @@ import Combine
 import CombineExt
 import Foundation
 
-
 /// 값들이 최신을 유지하되, 직접 send할 수 없게 하는 매커니즘이 필요해서 만든 Utils
 /// 잔액을 사용하는 객체들이 사용, 값을 직접 send할 수는 없되, value를 통해 현재 잔액을 받아갈 수 있도록 한다.
 public class ReadOnlyCurrentValuePublisher<Element>: Publisher {
