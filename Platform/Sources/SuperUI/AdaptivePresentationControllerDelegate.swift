@@ -8,7 +8,7 @@
 import UIKit
 
 // delegate이기 때문에 weak로 바꿔야해서 AnyObject를 받도록 했다.
-protocol AdaptivePresentationControllerDelegate: AnyObject {
+public protocol AdaptivePresentationControllerDelegate: AnyObject {
   func presentationControllerDidDismiss()
 }
 

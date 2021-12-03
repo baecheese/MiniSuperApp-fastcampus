@@ -16,6 +16,10 @@ let package = Package(
       name: "RIBsUtil",
       targets: ["RIBsUtil"]
     ),
+    .library(
+      name: "SuperUI",
+      targets: ["SuperUI"]
+    ),
   ],
   dependencies: [
     .package(url: "https://github.com/CombineCommunity/CombineExt", from: "1.0.0"),
@@ -34,6 +38,12 @@ let package = Package(
       name: "RIBsUtil",
       dependencies: [
         "ModernRIBs"
+      ]
+    ),
+    .target(
+      name: "SuperUI",
+      dependencies: [
+        "RIBsUtil"
       ]
     ),
   ]
