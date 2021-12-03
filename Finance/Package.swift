@@ -4,52 +4,45 @@
 import PackageDescription
 
 let package = Package(
-    name: "Finance",
-    platforms: [.iOS(.v14)],
-    products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "AddPaymentMethod",
-            targets: ["AddPaymentMethod"]
-        ),
-        .library(
-            name: "FinanaceEntity",
-            targets: ["FinanaceEntity"]
-        ),
-        .library(
-            name: "FinanceRepository",
-            targets: ["FinanceRepository"]
-        ),
-    ],
-    dependencies: [
-      .package(
-        name: "ModernRIBs",
-        url: "https://github.com/DevYeom/ModernRIBs",
-          .exact("1.0.1")
-      ),
-      .package(path: "../Platform"),// Local Package는 경로로 추가 가능
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "AddPaymentMethod",
-            dependencies: [
-              "ModernRIBs",
-              "FinanaceEntity"
-            ]
-        ),
-        .target(
-            name: "FinanaceEntity",
-            dependencies: [
-            ]
-        ),
-        .target(
-            name: "FinanceRepository",
-            dependencies: [
-              "FinanaceEntity",
-              .product(name: "CombineUtil", package: "Platform")
-            ]
-        )
-    ]
+  name: "Finance",
+  platforms: [.iOS(.v14)],
+  products: [
+    .library(
+      name: "AddPaymentMethod",
+      targets: ["AddPaymentMethod"]
+    ),
+    .library(
+      name: "FinanaceEntity",
+      targets: ["FinanaceEntity"]
+    ),
+    .library(
+      name: "FinanceRepository",
+      targets: ["FinanceRepository"]
+    ),
+  ],
+  dependencies: [
+    .package(name: "ModernRIBs", url: "https://github.com/DevYeom/ModernRIBs", .exact("1.0.1")),
+    .package(path: "../Platform"),// Local Package는 경로로 추가 가능
+  ],
+  targets: [
+    .target(
+      name: "AddPaymentMethod",
+      dependencies: [
+        "ModernRIBs",
+        "FinanaceEntity"
+      ]
+    ),
+    .target(
+      name: "FinanaceEntity",
+      dependencies: [
+      ]
+    ),
+    .target(
+      name: "FinanceRepository",
+      dependencies: [
+        "FinanaceEntity",
+        .product(name: "CombineUtil", package: "Platform")
+      ]
+    )
+  ]
 )
