@@ -7,6 +7,7 @@
 
 import ModernRIBs
 import UIKit
+import RIBsUtil
 
 protocol AddPaymentMethodPresentableListener: AnyObject {
   func didTapClose()
