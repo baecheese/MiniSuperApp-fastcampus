@@ -9,7 +9,7 @@ let package = Package(
     // Products define the executables and libraries a package produces, and make them visible to other packages.
     .library(
       name: "CombineUtil",
-      targets: ["CombinUtil"]),
+      targets: ["CombineUtil"]),
   ],
   dependencies: [
     .package(url: "https://github.com/CombineCommunity/CombineExt", from: "1.0.0"),

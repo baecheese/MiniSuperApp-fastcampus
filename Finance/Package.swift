@@ -12,8 +12,8 @@ let package = Package(
       targets: ["AddPaymentMethod"]
     ),
     .library(
-      name: "FinanaceEntity",
-      targets: ["FinanaceEntity"]
+      name: "FinanceEntity",
+      targets: ["FinanceEntity"]
     ),
     .library(
       name: "FinanceRepository",
@@ -29,18 +29,18 @@ let package = Package(
       name: "AddPaymentMethod",
       dependencies: [
         "ModernRIBs",
-        "FinanaceEntity"
+        "FinanceEntity"
       ]
     ),
     .target(
-      name: "FinanaceEntity",
+      name: "FinanceEntity",
       dependencies: [
       ]
     ),
     .target(
       name: "FinanceRepository",
       dependencies: [
-        "FinanaceEntity",
+        "FinanceEntity",
         .product(name: "CombineUtil", package: "Platform")
       ]
     )
