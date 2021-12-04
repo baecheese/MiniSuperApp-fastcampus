@@ -10,7 +10,7 @@ import Combine
 import FinanceEntity
 import FinanceRepository
 
-protocol AddPaymentMethodRouting: ViewableRouting {
+public protocol AddPaymentMethodRouting: ViewableRouting {
   // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
 }
 

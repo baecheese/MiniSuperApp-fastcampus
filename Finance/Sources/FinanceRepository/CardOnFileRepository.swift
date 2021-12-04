@@ -24,6 +24,8 @@ public final class CardOnFileRepositoryImp: CardOnFileRepository {
   
   public var cardOnFile: ReadOnlyCurrentValuePublisher<[PaymentMethod]> { paymentMethodsSubject }
   
+  public init() { }
+  
   /// HARD CODING - temp data
   private let paymentMethodsSubject = CurrentValuePublisher<[PaymentMethod]>([
     PaymentMethod(id: "0", name: "우리은행", digits: "0123", color: "#f19a38ff", isPrimary: false),

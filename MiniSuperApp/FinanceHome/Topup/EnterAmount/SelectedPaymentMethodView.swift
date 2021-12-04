@@ -1,4 +1,6 @@
 import UIKit
+import FinanceEntity
+import SuperUI
 
 struct SelectedPaymentMethodViewModel {
   let image: UIImage?
