@@ -29,13 +29,13 @@ final class TopupRouter: Router<TopupInteractable>, TopupRouting {
   private var navigationControllerable: NavigationControllerable?
   
   private let addPaymentMethodBuildable: AddPaymentMethodBuildable
-  private var addPaymentMethodRouting: AddPaymentMethodRouting?
+  private var addPaymentMethodRouting: Routing?
   
   private let enterAmountBuildable: EnterAmountBuildable
-  private var enterAmountRouting: EnterAmountRouting?
+  private var enterAmountRouting: Routing?
   
   private let cardOnFileBuildable: CardOnFileBuildable
-  private var cardOnFileRouting: CardOnFileRouting?
+  private var cardOnFileRouting: Routing?
   
   init(
     interactor: TopupInteractable,

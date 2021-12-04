@@ -52,7 +52,7 @@ final class TopupComponent: Component<TopupDependency>, TopupInteractorDependenc
 // MARK: - Builder
 
 public protocol TopupBuildable: Buildable {
-  func build(withListener listener: TopupListener) -> TopupRouting
+  func build(withListener listener: TopupListener) -> Routing
 }
 
 final class TopupBuilder: Builder<TopupDependency>, TopupBuildable {
@@ -61,7 +61,7 @@ final class TopupBuilder: Builder<TopupDependency>, TopupBuildable {
     super.init(dependency: dependency)
   }
   
-  public func build(withListener listener: TopupListener) -> TopupRouting {
+  public func build(withListener listener: TopupListener) -> Routing {
     let emptyPaymentMethodStream = CurrentValuePublisher(PaymentMethod(id: "", name: "", digits: "", color: "", isPrimary: false))
     let component = TopupComponent(dependency: dependency, paymentMethodStream: emptyPaymentMethodStream )
     let interactor = TopupInteractor(dependency: component)

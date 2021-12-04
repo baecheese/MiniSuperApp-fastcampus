@@ -12,7 +12,7 @@ import CombineUtil
 import SuperUI
 import RIBsUtil
 
-public protocol TopupRouting: Routing {
+protocol TopupRouting: Routing {
   func cleanupViews()
   
   func attachAddPaymentMethod(closeButtonType: DismissButtonType)
