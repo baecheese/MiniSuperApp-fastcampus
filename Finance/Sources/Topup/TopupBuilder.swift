@@ -55,9 +55,9 @@ public protocol TopupBuildable: Buildable {
   func build(withListener listener: TopupListener) -> Routing
 }
 
-final class TopupBuilder: Builder<TopupDependency>, TopupBuildable {
+public final class TopupBuilder: Builder<TopupDependency>, TopupBuildable {
   
-  override init(dependency: TopupDependency) {
+  public override init(dependency: TopupDependency) {
     super.init(dependency: dependency)
   }
   
