@@ -33,12 +33,6 @@ final class TransportHomeComponent: Component<TransportHomeDependency>, Transpor
 
 }
 
-// MARK: - Builder
-
-public protocol TransportHomeBuildable: Buildable {
-  func build(withListener listener: TransportHomeListener) -> TransportHomeRouting
-}
-
 public final class TransportHomeBuilder: Builder<TransportHomeDependency>, TransportHomeBuildable {
   
   public override init(dependency: TransportHomeDependency) {

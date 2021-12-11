@@ -14,10 +14,6 @@ protocol TransportHomePresentable: Presentable {
   func setSuperPayBalance(_ balance: String)
 }
 
-public protocol TransportHomeListener: AnyObject {
-  func transportHomeDidTapClose()
-}
-
 protocol TransportHomeInteractorDependency {
   var superPayBalance: ReadOnlyCurrentValuePublisher<Double> { get }
 }
