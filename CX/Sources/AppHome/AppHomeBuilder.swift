@@ -5,15 +5,19 @@ import TransportHome
 public protocol AppHomeDependency: Dependency {
   var cardOnFileRepository: CardOnFileRepository { get }
   var superPayRepository: SuperPayRepository { get }
+  var transportHomeBuildable: TransportHomeBuildable { get }
 }
 
-final class AppHomeComponent: Component<AppHomeDependency>, TransportHomeDependency {
+final class AppHomeComponent: Component<AppHomeDependency> {
   
   var cardOnFileRepository: CardOnFileRepository {
     dependency.cardOnFileRepository
   }
   var superPayRepository: SuperPayRepository {
     dependency.superPayRepository
+  }
+  var transportHomeBuildable: TransportHomeBuildable {
+    dependency.transportHomeBuildable
   }
 }
 
@@ -39,15 +43,13 @@ public final class AppHomeBuilder: Builder<AppHomeDependency>, AppHomeBuildable 
     let interactor = AppHomeInteractor(presenter: viewController)
     interactor.listener = listener
     
-    let transportHomeBuilder = TransportHomeBuilder(dependency: component)
-    
     // router는 riblet간의 이동을 담당
     // riblet은 트리 구조로 부모-여러 자식 riblet 구조를 이룰 수 있음
     // router는 이 자식 riblet을 떼었다가 붙였다가 할 수 있도록 해줌
     return AppHomeRouter(
       interactor: interactor,
       viewController: viewController,
-      transportHomeBuildable: transportHomeBuilder
+      transportHomeBuildable: component.transportHomeBuildable
     )
     // 이렇게 return된 router는 부모 riblet이 사용을 한다.
     // 현재 부모 riblet은 AppRoot riblet
