@@ -3,7 +3,7 @@ import Combine
 import Foundation
 import CombineUtil
 
-protocol TransportHomeRouting: ViewableRouting {
+public protocol TransportHomeRouting: ViewableRouting {
   func attatchTopup()
   func dettatchTopup()
 }

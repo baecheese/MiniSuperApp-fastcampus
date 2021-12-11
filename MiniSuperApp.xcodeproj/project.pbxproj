@@ -17,6 +17,7 @@
 		997955E6275A54F800E31CA1 /* SuperUI in Frameworks */ = {isa = PBXBuildFile; productRef = 997955E5275A54F800E31CA1 /* SuperUI */; };
 		997C389E275B67800050C88C /* FinanceHome in Frameworks */ = {isa = PBXBuildFile; productRef = 997C389D275B67800050C88C /* FinanceHome */; };
 		99AAF970275B456C00A41188 /* Topup in Frameworks */ = {isa = PBXBuildFile; productRef = 99AAF96F275B456C00A41188 /* Topup */; };
+		99DCD0D127647A5800C05B0C /* AppHome in Frameworks */ = {isa = PBXBuildFile; productRef = 99DCD0D027647A5800C05B0C /* AppHome */; };
 		F57EBE552738468700FE9319 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EBE522738468700FE9319 /* Array+Utils.swift */; };
 		F57F6AF026DB4A2D00C0117D /* ProfileHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F6AEC26DB4A2D00C0117D /* ProfileHomeRouter.swift */; };
 		F57F6AF126DB4A2D00C0117D /* ProfileHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F6AED26DB4A2D00C0117D /* ProfileHomeViewController.swift */; };
@@ -70,6 +71,7 @@
 				996998F2275BB32200E39468 /* TransportHome in Frameworks */,
 				F5829F6E26DB2DE900BFA8CD /* ModernRIBs in Frameworks */,
 				997955E4275A54F800E31CA1 /* RIBsUtil in Frameworks */,
+				99DCD0D127647A5800C05B0C /* AppHome in Frameworks */,
 				997C389E275B67800050C88C /* FinanceHome in Frameworks */,
 				997955E0275A54F800E31CA1 /* FinanceRepository in Frameworks */,
 			);
@@ -188,6 +190,7 @@
 				99AAF96F275B456C00A41188 /* Topup */,
 				997C389D275B67800050C88C /* FinanceHome */,
 				996998F1275BB32200E39468 /* TransportHome */,
+				99DCD0D027647A5800C05B0C /* AppHome */,
 			);
 			productName = SuperRedApp;
 			productReference = F5829F5526DB2BC400BFA8CD /* MiniSuperApp.app */;
@@ -509,6 +512,10 @@
 		99AAF96F275B456C00A41188 /* Topup */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Topup;
+		};
+		99DCD0D027647A5800C05B0C /* AppHome */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppHome;
 		};
 		F5829F6D26DB2DE900BFA8CD /* ModernRIBs */ = {
 			isa = XCSwiftPackageProductDependency;
