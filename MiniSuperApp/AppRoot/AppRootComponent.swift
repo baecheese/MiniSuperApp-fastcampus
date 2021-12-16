@@ -29,13 +29,22 @@ final class AppRootComponent: Component<AppRootDependency>, AppHomeDependency, T
     return TopupBuilder(dependency: self)
   }()
   
+  var topupBaseViewController: ViewControllable {
+    return rootViewController.topupViewControllerable
+  }
+  
+  private let rootViewController: ViewControllable
+  
+  
   init(
     dependency: AppRootDependency,
     cardOnFileRepository: CardOnFileRepository,
-    superPayRepository: SuperPayRepository
+    superPayRepository: SuperPayRepository,
+    rootViewController: ViewControllable
   ) {
     self.cardOnFileRepository = cardOnFileRepository
     self.superPayRepository = superPayRepository
+    self.rootViewController = rootViewController
     super.init(dependency: dependency)
   }
 }

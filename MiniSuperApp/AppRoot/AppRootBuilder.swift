@@ -23,15 +23,17 @@ final class AppRootBuilder: Builder<AppRootDependency>, AppRootBuildable {
   }
   
   func build() -> (launchRouter: LaunchRouting, urlHandler: URLHandler) {
-    let component = AppRootComponent(
-      dependency: dependency,
-      cardOnFileRepository: CardOnFileRepositoryImp(),
-      superPayRepository: SuperPayRepositoryImp()
-    )
     // AppRoot의 ViewController
     let tabBar = RootTabBarController()
     
     let interactor = AppRootInteractor(presenter: tabBar)
+    
+    let component = AppRootComponent(
+      dependency: dependency,
+      cardOnFileRepository: CardOnFileRepositoryImp(),
+      superPayRepository: SuperPayRepositoryImp(),
+      rootViewController: tabBar
+    )
     
     // 이 앱의 부모 riblet인 AppRoot riblet
     // 아래 3가지 자식 riblet을 붙이기 위해 Builder를 생성
