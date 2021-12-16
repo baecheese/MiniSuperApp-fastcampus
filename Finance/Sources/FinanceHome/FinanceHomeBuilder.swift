@@ -7,9 +7,10 @@ import Topup
 public protocol FinanceHomeDependency: Dependency {
   var superPayRepository: SuperPayRepository { get }
   var cardOnFileRepository: CardOnFileRepository { get }
+  var topupBuildable: TopupBuildable { get }
 }
 
-final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency, AddPaymentMethodDependency, TopupDependency {
+final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency, AddPaymentMethodDependency {
   
   var superPayRepository: SuperPayRepository { dependency.superPayRepository }
   var cardOnFileRepository: CardOnFileRepository { dependency.cardOnFileRepository }
@@ -56,7 +57,6 @@ public final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHo
     let superPayDashboardBuilder = SuperPayDashboardBuilder(dependency: component)
     let cardOnFileDashboardBuilder = CardOnFileDashboardBuilder(dependency: component)
     let addPaymentMethodBuilder = AddPaymentMethodBuilder(dependency: component)
-    let topupBuilder = TopupBuilder(dependency: component)
     
     return FinanceHomeRouter(
       interactor: interactor,
@@ -64,7 +64,7 @@ public final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHo
       superPayDashBoardBuildable: superPayDashboardBuilder,
       cardOnFileDashboardBuildable: cardOnFileDashboardBuilder,
       addPaymentMethodBuilable: addPaymentMethodBuilder,
-      topupBuilable: topupBuilder
+      topupBuilable: dependency.topupBuildable
     )
   }
 }
