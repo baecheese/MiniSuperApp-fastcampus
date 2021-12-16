@@ -49,12 +49,6 @@ final class TopupComponent: Component<TopupDependency>, TopupInteractorDependenc
   
 }
 
-// MARK: - Builder
-
-public protocol TopupBuildable: Buildable {
-  func build(withListener listener: TopupListener) -> Routing
-}
-
 public final class TopupBuilder: Builder<TopupDependency>, TopupBuildable {
   
   public override init(dependency: TopupDependency) {

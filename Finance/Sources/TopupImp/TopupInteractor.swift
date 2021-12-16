@@ -27,11 +27,6 @@ protocol TopupRouting: Routing {
   func popToRoot()
 }
 
-public protocol TopupListener: AnyObject {
-  func topupDidClose()
-  func topupDidFinish()
-}
-
 protocol TopupInteractorDependency {
   var cardOnFileRepository: CardOnFileRepository { get }
   var paymentMethodStream: CurrentValuePublisher<PaymentMethod> { get }
