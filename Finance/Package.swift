@@ -54,6 +54,7 @@ let package = Package(
       dependencies: [
         "ModernRIBs",
         "FinanceRepository",
+        .product(name: "RIBsUtil", package: "Platform"),
         .product(name: "SuperUI", package: "Platform")
       ]
     ),
