@@ -11,6 +11,7 @@ import CombineUtil
 import FinanceRepository
 import AddPaymentMethod
 import FinanceEntity
+import Topup
 
 /// topup riblet이 동작하기 위해 필요한 것들을 선언
 /// topup riblet을 띄운 부모가 지정
@@ -21,7 +22,6 @@ public protocol TopupDependency: Dependency {
 }
 
 final class TopupComponent: Component<TopupDependency>, TopupInteractorDependency, AddPaymentMethodDependency, EnterAmountDependency, CardOnFileDependency {
-  
   
   var superPayRepository: SuperPayRepository { dependency.superPayRepository }
   
