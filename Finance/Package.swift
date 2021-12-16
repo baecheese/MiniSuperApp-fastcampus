@@ -12,6 +12,10 @@ let package = Package(
       targets: ["AddPaymentMethod"]
     ),
     .library(
+      name: "AddPaymentMethodImp",
+      targets: ["AddPaymentMethodImp"]
+    ),
+    .library(
       name: "Topup",
       targets: ["Topup"]
     ),
@@ -42,8 +46,14 @@ let package = Package(
       dependencies: [
         "ModernRIBs",
         "FinanceEntity",
+        .product(name: "RIBsUtil", package: "Platform")
+      ]
+    ),
+    .target(
+      name: "AddPaymentMethodImp",
+      dependencies: [
+        "ModernRIBs",
         "FinanceRepository",
-        .product(name: "RIBsUtil", package: "Platform"),
         .product(name: "SuperUI", package: "Platform")
       ]
     ),
