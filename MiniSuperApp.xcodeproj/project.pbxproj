@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		992815A5273CFBBD00ED077C /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 992815A4273CFBBD00ED077C /* CombineExt */; };
+		99368511276B001E0092AB4D /* AppRootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99368510276B001E0092AB4D /* AppRootComponent.swift */; };
 		9959F6DF2764DCBB0025E0C7 /* ProfileHome in Frameworks */ = {isa = PBXBuildFile; productRef = 9959F6DE2764DCBB0025E0C7 /* ProfileHome */; };
 		9963F5492759F58D00365725 /* AddPaymentMethod in Frameworks */ = {isa = PBXBuildFile; productRef = 9963F5482759F58D00365725 /* AddPaymentMethod */; };
 		996998F2275BB32200E39468 /* TransportHome in Frameworks */ = {isa = PBXBuildFile; productRef = 996998F1275BB32200E39468 /* TransportHome */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		99368510276B001E0092AB4D /* AppRootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootComponent.swift; sourceTree = "<group>"; };
 		9963F5422759F2B900365725 /* CX */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CX; sourceTree = "<group>"; };
 		9963F5432759F33200365725 /* Finance */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Finance; sourceTree = "<group>"; };
 		9963F5442759F34100365725 /* Transport */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Transport; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				F5829F7026DB34AA00BFA8CD /* AppRootRouter.swift */,
 				F5829F7226DB34AA00BFA8CD /* AppRootBuilder.swift */,
+				99368510276B001E0092AB4D /* AppRootComponent.swift */,
 				F5829F7326DB34AA00BFA8CD /* AppRootInteractor.swift */,
 				F57F6AFD26DB4CD700C0117D /* RootTabBarController.swift */,
 			);
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5829F7626DB34AA00BFA8CD /* AppRootBuilder.swift in Sources */,
+				99368511276B001E0092AB4D /* AppRootComponent.swift in Sources */,
 				F5829F7726DB34AA00BFA8CD /* AppRootInteractor.swift in Sources */,
 				F57F6AFE26DB4CD700C0117D /* RootTabBarController.swift in Sources */,
 				F5829F5926DB2BC400BFA8CD /* AppDelegate.swift in Sources */,
