@@ -24,6 +24,7 @@
 		99A12F29276B6CAF00D12CB4 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 99A12F28276B6CAF00D12CB4 /* Network */; };
 		99A12F2B276B6CAF00D12CB4 /* NetworkImp in Frameworks */ = {isa = PBXBuildFile; productRef = 99A12F2A276B6CAF00D12CB4 /* NetworkImp */; };
 		99A12F2D276B6D2F00D12CB4 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A12F2C276B6D2F00D12CB4 /* BaseURL.swift */; };
+		99A12F2F276B6EF300D12CB4 /* SuperAppURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A12F2E276B6EF300D12CB4 /* SuperAppURLProtocol.swift */; };
 		99AAF970275B456C00A41188 /* Topup in Frameworks */ = {isa = PBXBuildFile; productRef = 99AAF96F275B456C00A41188 /* Topup */; };
 		99DCD0D127647A5800C05B0C /* AppHome in Frameworks */ = {isa = PBXBuildFile; productRef = 99DCD0D027647A5800C05B0C /* AppHome */; };
 		F57EBE552738468700FE9319 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EBE522738468700FE9319 /* Array+Utils.swift */; };
@@ -46,6 +47,7 @@
 		9963F5452759F37600365725 /* Profile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Profile; sourceTree = "<group>"; };
 		9963F5462759F39000365725 /* Platform */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Platform; sourceTree = "<group>"; };
 		99A12F2C276B6D2F00D12CB4 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
+		99A12F2E276B6EF300D12CB4 /* SuperAppURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperAppURLProtocol.swift; sourceTree = "<group>"; };
 		F57EBE522738468700FE9319 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
 		F57F6AFD26DB4CD700C0117D /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		F5829F5526DB2BC400BFA8CD /* MiniSuperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniSuperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,7 @@
 				F5829F7326DB34AA00BFA8CD /* AppRootInteractor.swift */,
 				F57F6AFD26DB4CD700C0117D /* RootTabBarController.swift */,
 				99A12F2C276B6D2F00D12CB4 /* BaseURL.swift */,
+				99A12F2E276B6EF300D12CB4 /* SuperAppURLProtocol.swift */,
 			);
 			path = AppRoot;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5829F7626DB34AA00BFA8CD /* AppRootBuilder.swift in Sources */,
+				99A12F2F276B6EF300D12CB4 /* SuperAppURLProtocol.swift in Sources */,
 				99368511276B001E0092AB4D /* AppRootComponent.swift in Sources */,
 				F5829F7726DB34AA00BFA8CD /* AppRootInteractor.swift in Sources */,
 				F57F6AFE26DB4CD700C0117D /* RootTabBarController.swift in Sources */,
