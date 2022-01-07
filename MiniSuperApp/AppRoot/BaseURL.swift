@@ -10,7 +10,7 @@ import Foundation
 struct BaseURL {
   
   var financeBaseURL: URL {
-    return URL(string: "http://finance.superapp.com/api/vi")! 
+    return URL(string: "http://finance.superapp.com/api/v1")!
   }
   
 }
