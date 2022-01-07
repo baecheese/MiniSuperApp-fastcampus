@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import FinanceEntity
 import CombineUtil
+import Network
 
 /// 서버 API로 호출해서 유저에게 등록된 카드 목록을 가져옴
 /// 그 카드 목록은 data Stream으로 가지고 있음
@@ -24,8 +25,6 @@ public final class CardOnFileRepositoryImp: CardOnFileRepository {
   
   public var cardOnFile: ReadOnlyCurrentValuePublisher<[PaymentMethod]> { paymentMethodsSubject }
   
-  public init() { }
-  
   /// HARD CODING - temp data
   private let paymentMethodsSubject = CurrentValuePublisher<[PaymentMethod]>([
     PaymentMethod(id: "0", name: "우리은행", digits: "0123", color: "#f19a38ff", isPrimary: false),
@@ -38,11 +37,29 @@ public final class CardOnFileRepositoryImp: CardOnFileRepository {
   
   
   public func addCard(info: AddPaymentMethodInfo) -> AnyPublisher<PaymentMethod, Error> {
-    let paymentMethod = PaymentMethod(id: "00", name: "new temp card", digits: "\(info.number.suffix(4))", color: "", isPrimary: false)
-    var new = paymentMethodsSubject.value
-    new.append(paymentMethod)
-    paymentMethodsSubject.send(new)
-    return Just(paymentMethod).setFailureType(to: Error.self).eraseToAnyPublisher()
+    let request = AddCardRequest(baseURL: baseURL, info: info)
+    return network.send(request)
+      .map(\.output.card)
+      .handleEvents(
+        receiveSubscription: nil,
+        receiveOutput: { [weak self] method in
+          guard let this = self else { return }
+          // 실제 서버가 없어서 임시로 response 해주는 코드
+          this.paymentMethodsSubject.send(this.paymentMethodsSubject.value + [method])
+        },
+        receiveCompletion: nil,
+        receiveCancel: nil,
+        receiveRequest: nil
+      )
+      .eraseToAnyPublisher()
+  }
+  
+  private let network: Network
+  private let baseURL: URL
+  
+  public init(network: Network, baseURL: URL) {
+    self.network = network
+    self.baseURL = baseURL
   }
   
 }

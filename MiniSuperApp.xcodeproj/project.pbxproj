@@ -12,6 +12,7 @@
 		9949FA60276B1D1C0047AA21 /* TransportHomeImp in Frameworks */ = {isa = PBXBuildFile; productRef = 9949FA5F276B1D1C0047AA21 /* TransportHomeImp */; };
 		9949FA62276B1D240047AA21 /* TransportHome in Frameworks */ = {isa = PBXBuildFile; productRef = 9949FA61276B1D240047AA21 /* TransportHome */; };
 		9949FA64276B27320047AA21 /* TopupImp in Frameworks */ = {isa = PBXBuildFile; productRef = 9949FA63276B27320047AA21 /* TopupImp */; };
+		994E9C8827857FB800AC18CF /* SetupURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994E9C8727857FB800AC18CF /* SetupURLProtocol.swift */; };
 		9959F6DF2764DCBB0025E0C7 /* ProfileHome in Frameworks */ = {isa = PBXBuildFile; productRef = 9959F6DE2764DCBB0025E0C7 /* ProfileHome */; };
 		9963F5492759F58D00365725 /* AddPaymentMethod in Frameworks */ = {isa = PBXBuildFile; productRef = 9963F5482759F58D00365725 /* AddPaymentMethod */; };
 		996B0447276B2D9B0016E7AE /* AddPaymentMethodImp in Frameworks */ = {isa = PBXBuildFile; productRef = 996B0446276B2D9B0016E7AE /* AddPaymentMethodImp */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		99368510276B001E0092AB4D /* AppRootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootComponent.swift; sourceTree = "<group>"; };
+		994E9C8727857FB800AC18CF /* SetupURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupURLProtocol.swift; sourceTree = "<group>"; };
 		9963F5422759F2B900365725 /* CX */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CX; sourceTree = "<group>"; };
 		9963F5432759F33200365725 /* Finance */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Finance; sourceTree = "<group>"; };
 		9963F5442759F34100365725 /* Transport */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Transport; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				F57F6AFD26DB4CD700C0117D /* RootTabBarController.swift */,
 				99A12F2C276B6D2F00D12CB4 /* BaseURL.swift */,
 				99A12F2E276B6EF300D12CB4 /* SuperAppURLProtocol.swift */,
+				994E9C8727857FB800AC18CF /* SetupURLProtocol.swift */,
 			);
 			path = AppRoot;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5829F7626DB34AA00BFA8CD /* AppRootBuilder.swift in Sources */,
+				994E9C8827857FB800AC18CF /* SetupURLProtocol.swift in Sources */,
 				99A12F2F276B6EF300D12CB4 /* SuperAppURLProtocol.swift in Sources */,
 				99368511276B001E0092AB4D /* AppRootComponent.swift in Sources */,
 				F5829F7726DB34AA00BFA8CD /* AppRootInteractor.swift in Sources */,
