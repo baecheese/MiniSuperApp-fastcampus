@@ -10,14 +10,17 @@ import XCTest
 
 final class EnterAmountInteractorTests: XCTestCase {
   
-  private var interactor: EnterAmountInteractor!
-  
-  // TODO: declare other objects and mocks you need as private vars
+  /// systemUnderTest - sut
+  private var sut: EnterAmountInteractor!
+  private var presenter: EnterAmountPresentableMock!
   
   override func setUp() {
     super.setUp()
-    
-    // TODO: instantiate objects and mocks
+    // 실제 앱에서는 presenter에는 viewController, dependency에는 component
+    sut = EnterAmountInteractor(
+      presenter: self.presenter,
+      dependency: <#T##EnterAmountInteractorDependency#>
+    )
   }
   
   // MARK: - Tests
