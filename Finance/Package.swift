@@ -68,6 +68,7 @@ let package = Package(
       name: "TopupImp",
       dependencies: [
         "ModernRIBs",
+        "Topup",
         "FinanceEntity",
         "FinanceRepository",
         "AddPaymentMethod",
