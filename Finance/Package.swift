@@ -99,6 +99,12 @@ let package = Package(
         .product(name: "CombineUtil", package: "Platform"),
         .product(name: "Network", package: "Platform")
       ]
+    ),
+    .testTarget(
+      name: "TopupImpTests",
+      dependencies: [
+        "TopupImp"
+      ]
     )
   ]
 )
