@@ -82,7 +82,7 @@ final class EnterAmountInteractor: PresentableInteractor<EnterAmountPresentable>
       paymentId: dependency.selectedPaymentMethod.value.id
     )
       // 위의 메소드가 background thread에서 돌아서 결과값은 main thread에서 받아야함 (stopLoading UI update 때문)
-      .receive(on: DispatchQueue.main)
+      .receive(on: ImmediateScheduler.shared)
       .sink(
       receiveCompletion: { [weak self] _ in
         self?.presenter.stopLoading()

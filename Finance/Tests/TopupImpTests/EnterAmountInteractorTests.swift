@@ -78,11 +78,11 @@ final class EnterAmountInteractorTests: XCTestCase {
     sut.didTapTopup(with: 1_000_000)
     
     // then
-    XCTAssertEqual(repository.topupCallCount, 1)
     XCTAssertEqual(presenter.startLoadingCount, 1)
+    XCTAssertEqual(presenter.stopLoadingCount, 1)
+    XCTAssertEqual(repository.topupCallCount, 1)
     XCTAssertEqual(repository.paymentMethodID, "id_0")
     XCTAssertEqual(repository.topupAmount, 1_000_000)
-    XCTAssertEqual(presenter.stopLoadingCount, 1)
     XCTAssertEqual(listener.enterAmountDidFinishTopupCount, 1)
   }
   
