@@ -101,10 +101,19 @@ let package = Package(
         .product(name: "Network", package: "Platform")
       ]
     ),
+    .target(
+      name: "FinanceRepositoryTestSupport",
+      dependencies: [
+        "FinanceRepository",
+        "FinanceEntity",
+        .product(name: "CombineUtil", package: "Platform")
+      ]
+    ),
     .testTarget(
       name: "TopupImpTests",
       dependencies: [
-        "TopupImp"
+        "TopupImp",
+        "FinanceRepositoryTestSupport"
       ]
     )
   ]
