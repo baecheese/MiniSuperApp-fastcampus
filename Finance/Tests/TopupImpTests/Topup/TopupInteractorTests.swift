@@ -12,13 +12,13 @@ import TopupTestSupport
 final class TopupInteractorTests: XCTestCase {
   
   private var sut: TopupInteractor!
-  private var dependency: TopupInteractorDependencyMock!
+  private var dependency: TopupDependencyMock!
   private var lisenter: TopupLisenterMock!
   private var router: TopupRoutingMock!
   
   override func setUp() {
     super.setUp()
-    self.dependency = TopupInteractorDependencyMock()
+    self.dependency = TopupDependencyMock()
     self.lisenter = TopupLisenterMock()
     
     let interactor = TopupInteractor(dependency: self.dependency)

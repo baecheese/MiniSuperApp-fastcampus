@@ -18,7 +18,7 @@ import SuperUI
 
 @testable import TopupImp
 
-final class TopupInteractorDependencyMock: TopupInteractorDependency {
+final class TopupDependencyMock: TopupInteractorDependency {
   
   var cardOnFileRepository: CardOnFileRepository = CardOnFileRepositoryMock()
   var paymentMethodStream: CurrentValuePublisher<PaymentMethod> = .init(
