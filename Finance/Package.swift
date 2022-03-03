@@ -24,6 +24,10 @@ let package = Package(
       targets: ["TopupImp"]
     ),
     .library(
+      name: "TopupTestSupport",
+      targets: ["TopupTestSupport"]
+    ),
+    .library(
       name: "FinanceHome",
       targets: ["FinanceHome"]
     ),
@@ -34,6 +38,10 @@ let package = Package(
     .library(
       name: "FinanceRepository",
       targets: ["FinanceRepository"]
+    ),
+    .library(
+      name: "FinanceRepositoryTestSupport",
+      targets: ["FinanceRepositoryTestSupport"]
     ),
   ],
   dependencies: [
@@ -77,6 +85,12 @@ let package = Package(
       ]
     ),
     .target(
+      name: "TopupTestSupport",
+      dependencies: [
+        "Topup",
+      ]
+    ),
+    .target(
       name: "FinanceHome",
       dependencies: [
         "ModernRIBs",
@@ -113,7 +127,8 @@ let package = Package(
       name: "TopupImpTests",
       dependencies: [
         "TopupImp",
-        "FinanceRepositoryTestSupport"
+        "FinanceRepositoryTestSupport",
+        "TopupTestSupport"
       ]
     )
   ]

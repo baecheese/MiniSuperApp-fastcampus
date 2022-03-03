@@ -7,16 +7,21 @@
 
 @testable import TopupImp
 import XCTest
+import TopupTestSupport
 
 final class TopupInteractorTests: XCTestCase {
   
   private var sut: TopupInteractor!
-  private var dependency: TopupInteractorDependency!
+  private var dependency: TopupInteractorDependencyMock!
+  private var lisenter: TopupLisenterMock!
   
   override func setUp() {
     super.setUp()
     self.dependency = TopupInteractorDependencyMock()
+    self.lisenter = TopupLisenterMock()
+    
     sut = TopupInteractor(dependency: self.dependency)
+    sut.listener = self.lisenter
   }
   
 }
