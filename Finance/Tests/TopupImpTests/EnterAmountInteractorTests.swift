@@ -108,4 +108,24 @@ final class EnterAmountInteractorTests: XCTestCase {
     XCTAssertEqual(listener.enterAmountDidFinishTopupCount, 0)//fail 이기 때문이 0이어야 함
   }
   
+  func testDidTapClose() {
+    // give
+    
+    // when
+    sut.didTapClose()
+    
+    // then
+    XCTAssertEqual(listener.enterAmountDidTapCloseCount, 1)
+  }
+  
+  func testDidTapPaymentMethod() {
+    // give
+    
+    // when
+    sut.didTapPaymentMethod()
+    
+    // then
+    XCTAssertEqual(listener.enterAmountDidTapPaymentMethodCount, 1)
+  }
+  
 }
