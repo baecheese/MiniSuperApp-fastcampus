@@ -11,6 +11,7 @@ import Combine
 import CombineUtil
 import FinanceEntity
 import FinanceRepository
+import CombineSchedulers
 
 protocol EnterAmountRouting: ViewableRouting {
   // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
@@ -28,11 +29,12 @@ protocol EnterAmountListener: AnyObject {
   func enterAmountDidTapClose()
   func enterAmountDidTapPaymentMethod()//카드 목록 보기
   func enterAmountDidFinishTopup()
-} 
+}
 
 protocol EnterAmountInteractorDependency {
   var selectedPaymentMethod: ReadOnlyCurrentValuePublisher<PaymentMethod> { get }
   var superPayRepository: SuperPayRepository { get }
+  var mainQueue: AnySchedulerOf<DispatchQueue> { get }
 }
 
 final class EnterAmountInteractor: PresentableInteractor<EnterAmountPresentable>, EnterAmountInteractable, EnterAmountPresentableListener {
@@ -81,8 +83,7 @@ final class EnterAmountInteractor: PresentableInteractor<EnterAmountPresentable>
       amount: amount,
       paymentId: dependency.selectedPaymentMethod.value.id
     )
-      // 위의 메소드가 background thread에서 돌아서 결과값은 main thread에서 받아야함 (stopLoading UI update 때문)
-      .receive(on: ImmediateScheduler.shared)
+      .receive(on: dependency.mainQueue)
       .sink(
       receiveCompletion: { [weak self] _ in
         self?.presenter.stopLoading()

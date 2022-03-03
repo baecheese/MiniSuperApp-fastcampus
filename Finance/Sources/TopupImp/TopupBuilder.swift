@@ -12,6 +12,7 @@ import FinanceRepository
 import AddPaymentMethod
 import FinanceEntity
 import Topup
+import CombineSchedulers
 
 /// topup riblet이 동작하기 위해 필요한 것들을 선언
 /// topup riblet을 띄운 부모가 지정
@@ -20,9 +21,12 @@ public protocol TopupDependency: Dependency {
   var cardOnFileRepository: CardOnFileRepository { get }
   var superPayRepository: SuperPayRepository { get }
   var addPaymentMethodBuildable: AddPaymentMethodBuildable { get }
+  var mainQueue: AnySchedulerOf<DispatchQueue> { get }
 }
 
 final class TopupComponent: Component<TopupDependency>, TopupInteractorDependency, EnterAmountDependency, CardOnFileDependency {
+  
+  var mainQueue: AnySchedulerOf<DispatchQueue> { dependency.mainQueue  }
   
   var superPayRepository: SuperPayRepository { dependency.superPayRepository }
   

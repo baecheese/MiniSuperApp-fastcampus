@@ -19,8 +19,11 @@ import AddPaymentMethod
 import AddPaymentMethodImp
 import Network
 import NetworkImp
+import CombineSchedulers
 
 final class AppRootComponent: Component<AppRootDependency>, AppHomeDependency, TransportHomeDependency, FinanceHomeDependency, ProfileHomeDependency, TopupDependency, AddPaymentMethodDependency {
+  
+  var mainQueue: AnySchedulerOf<DispatchQueue> { .main }
   
   var superPayRepository: SuperPayRepository
   var cardOnFileRepository: CardOnFileRepository
