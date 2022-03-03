@@ -19,7 +19,6 @@
 		997955DE275A54F800E31CA1 /* FinanceEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 997955DD275A54F800E31CA1 /* FinanceEntity */; };
 		997955E0275A54F800E31CA1 /* FinanceRepository in Frameworks */ = {isa = PBXBuildFile; productRef = 997955DF275A54F800E31CA1 /* FinanceRepository */; };
 		997955E2275A54F800E31CA1 /* CombineUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 997955E1275A54F800E31CA1 /* CombineUtil */; };
-		997955E4275A54F800E31CA1 /* RIBsUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 997955E3275A54F800E31CA1 /* RIBsUtil */; };
 		997955E6275A54F800E31CA1 /* SuperUI in Frameworks */ = {isa = PBXBuildFile; productRef = 997955E5275A54F800E31CA1 /* SuperUI */; };
 		997C389E275B67800050C88C /* FinanceHome in Frameworks */ = {isa = PBXBuildFile; productRef = 997C389D275B67800050C88C /* FinanceHome */; };
 		99A12F29276B6CAF00D12CB4 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 99A12F28276B6CAF00D12CB4 /* Network */; };
@@ -27,6 +26,7 @@
 		99A12F2D276B6D2F00D12CB4 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A12F2C276B6D2F00D12CB4 /* BaseURL.swift */; };
 		99A12F2F276B6EF300D12CB4 /* SuperAppURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A12F2E276B6EF300D12CB4 /* SuperAppURLProtocol.swift */; };
 		99AAF970275B456C00A41188 /* Topup in Frameworks */ = {isa = PBXBuildFile; productRef = 99AAF96F275B456C00A41188 /* Topup */; };
+		99AB0FDA27D0815700A45076 /* RIBsUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 99AB0FD927D0815700A45076 /* RIBsUtil */; };
 		99DCD0D127647A5800C05B0C /* AppHome in Frameworks */ = {isa = PBXBuildFile; productRef = 99DCD0D027647A5800C05B0C /* AppHome */; };
 		F57EBE552738468700FE9319 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EBE522738468700FE9319 /* Array+Utils.swift */; };
 		F57F6AFE26DB4CD700C0117D /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F6AFD26DB4CD700C0117D /* RootTabBarController.swift */; };
@@ -81,10 +81,10 @@
 				997955DE275A54F800E31CA1 /* FinanceEntity in Frameworks */,
 				997955E6275A54F800E31CA1 /* SuperUI in Frameworks */,
 				F5829F6E26DB2DE900BFA8CD /* ModernRIBs in Frameworks */,
-				997955E4275A54F800E31CA1 /* RIBsUtil in Frameworks */,
 				99A12F29276B6CAF00D12CB4 /* Network in Frameworks */,
 				99DCD0D127647A5800C05B0C /* AppHome in Frameworks */,
 				997C389E275B67800050C88C /* FinanceHome in Frameworks */,
+				99AB0FDA27D0815700A45076 /* RIBsUtil in Frameworks */,
 				997955E0275A54F800E31CA1 /* FinanceRepository in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,7 +189,6 @@
 				997955DD275A54F800E31CA1 /* FinanceEntity */,
 				997955DF275A54F800E31CA1 /* FinanceRepository */,
 				997955E1275A54F800E31CA1 /* CombineUtil */,
-				997955E3275A54F800E31CA1 /* RIBsUtil */,
 				997955E5275A54F800E31CA1 /* SuperUI */,
 				99AAF96F275B456C00A41188 /* Topup */,
 				997C389D275B67800050C88C /* FinanceHome */,
@@ -201,6 +200,7 @@
 				996B0446276B2D9B0016E7AE /* AddPaymentMethodImp */,
 				99A12F28276B6CAF00D12CB4 /* Network */,
 				99A12F2A276B6CAF00D12CB4 /* NetworkImp */,
+				99AB0FD927D0815700A45076 /* RIBsUtil */,
 			);
 			productName = SuperRedApp;
 			productReference = F5829F5526DB2BC400BFA8CD /* MiniSuperApp.app */;
@@ -523,10 +523,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = CombineUtil;
 		};
-		997955E3275A54F800E31CA1 /* RIBsUtil */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RIBsUtil;
-		};
 		997955E5275A54F800E31CA1 /* SuperUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SuperUI;
@@ -546,6 +542,10 @@
 		99AAF96F275B456C00A41188 /* Topup */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Topup;
+		};
+		99AB0FD927D0815700A45076 /* RIBsUtil */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RIBsUtil;
 		};
 		99DCD0D027647A5800C05B0C /* AppHome */ = {
 			isa = XCSwiftPackageProductDependency;

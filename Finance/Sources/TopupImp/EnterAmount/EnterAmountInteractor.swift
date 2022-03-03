@@ -28,7 +28,7 @@ protocol EnterAmountListener: AnyObject {
   func enterAmountDidTapClose()
   func enterAmountDidTapPaymentMethod()//카드 목록 보기
   func enterAmountDidFinishTopup()
-}
+} 
 
 protocol EnterAmountInteractorDependency {
   var selectedPaymentMethod: ReadOnlyCurrentValuePublisher<PaymentMethod> { get }
