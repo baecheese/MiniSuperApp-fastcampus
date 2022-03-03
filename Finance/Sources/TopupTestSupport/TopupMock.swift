@@ -12,12 +12,12 @@ final class TopupLisenterMock: TopupListener {
   
   public var topupDidCloseCallCount = 0
   public func topupDidClose() {
-    self.topupDidCloseCallCoount += 1
+    self.topupDidCloseCallCount += 1
   }
   
   public var topupDidFinishCallCount = 0
   public func topupDidFinish() {
-    self.topupDidFinishCallCoount += 1
+    self.topupDidFinishCallCount += 1
   }
   
   public init() {

@@ -14,14 +14,19 @@ final class TopupInteractorTests: XCTestCase {
   private var sut: TopupInteractor!
   private var dependency: TopupInteractorDependencyMock!
   private var lisenter: TopupLisenterMock!
+  private var router: TopupRoutingMock!
   
   override func setUp() {
     super.setUp()
     self.dependency = TopupInteractorDependencyMock()
     self.lisenter = TopupLisenterMock()
     
-    sut = TopupInteractor(dependency: self.dependency)
-    sut.listener = self.lisenter
+    let interactor = TopupInteractor(dependency: self.dependency)
+    self.router = TopupRoutingMock(interactable: interactor)
+    
+    interactor.listener = self.lisenter
+    interactor.router = self.router
+    self.sut = interactor
   }
   
 }
