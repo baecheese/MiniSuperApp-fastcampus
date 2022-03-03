@@ -86,4 +86,26 @@ final class EnterAmountInteractorTests: XCTestCase {
     XCTAssertEqual(listener.enterAmountDidFinishTopupCount, 1)
   }
   
+  func testTopupWithFailure() {
+    // give
+    let paymentMethod = PaymentMethod(
+      id: "id_0",
+      name: "name_0",
+      digits: "9999",
+      color: "#13ABE8FF",
+      isPrimary: false
+    )
+    dependency.selectedPaymentMoethodSubject.send(paymentMethod)
+    // 실패할 경우로 세팅
+    repository.shouldTopupSucceed = false
+    
+    // when
+    sut.didTapTopup(with: 1_000_000)
+    
+    // then
+    XCTAssertEqual(presenter.startLoadingCount, 1)
+    XCTAssertEqual(presenter.stopLoadingCount, 1)
+    XCTAssertEqual(listener.enterAmountDidFinishTopupCount, 0)//fail 이기 때문이 0이어야 함
+  }
+  
 }
