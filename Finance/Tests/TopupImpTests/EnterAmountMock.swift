@@ -10,6 +10,7 @@ import CombineUtil
 import FinanceEntity
 import FinanceRepository
 import FinanceRepositoryTestSupport
+import CombineSchedulers
 
 @testable import TopupImp
 
@@ -43,14 +44,16 @@ final class EnterAmountPresentableMock: EnterAmountPresentable {
 
 final class EnterAmountDependencyMock: EnterAmountInteractorDependency {
   
+  var mainQueue: AnySchedulerOf<DispatchQueue> { .immediate }
+  
   var selectedPaymentMoethodSubject = CurrentValuePublisher<PaymentMethod>(
-     PaymentMethod(
+    PaymentMethod(
       id: "",
       name: "",
       digits: "",
       color: "",
       isPrimary: false
-     )
+    )
   )
   
   var selectedPaymentMethod: ReadOnlyCurrentValuePublisher<PaymentMethod> {
