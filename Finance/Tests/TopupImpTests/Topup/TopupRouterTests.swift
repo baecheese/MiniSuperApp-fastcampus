@@ -14,25 +14,30 @@ final class TopupRouterTests: XCTestCase {
   
   private var sut: TopupRouter!
   private var interactor: TopupInteractableMock!
-  private var viewController: ViewControllableMock
+  private var viewController: ViewControllableMock!
   private var addPaymentMethodBuildable: AddPaymentMethodBuildableMock!
   private var enterAmountBuildable: EnterAmountBuildableMock!
+  private var cardOnFileBuildable: CardOnFileBuildableMock!
   
   override func setUp() {
     super.setUp()
-    
     self.interactor = TopupInteractableMock()
     self.viewController = ViewControllableMock()
     self.addPaymentMethodBuildable = AddPaymentMethodBuildableMock()
     self.enterAmountBuildable = EnterAmountBuildableMock()
+    self.cardOnFileBuildable = CardOnFileBuildableMock()
     
     self.sut = TopupRouter(
       interactor: self.interactor,
       viewController: self.viewController,
       addPaymentMethodBuildable: self.addPaymentMethodBuildable,
-      enterAmountBuildable: self.EnterAmountRouterTests,
-      cardOnFileBuidable: <#T##CardOnFileBuildable#>
+      enterAmountBuildable: self.enterAmountBuildable,
+      cardOnFileBuidable: self.cardOnFileBuildable
     )
+  }
+  
+  func testA() {
+    
   }
   
 }

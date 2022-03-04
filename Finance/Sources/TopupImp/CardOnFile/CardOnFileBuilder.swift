@@ -21,7 +21,7 @@ final class CardOnFileComponent: Component<CardOnFileDependency> {
 // MARK: - Builder
 
 protocol CardOnFileBuildable: Buildable {
-  func build(withListener listener: CardOnFileListener, paymentMethods: [PaymentMethod]) -> ViewableRouting
+  func build(withListener listener: CardOnFileListener, paymentMethods: [PaymentMethod]) -> CardOnFileRouting
 }
 
 final class CardOnFileBuilder: Builder<CardOnFileDependency>, CardOnFileBuildable {
@@ -30,7 +30,7 @@ final class CardOnFileBuilder: Builder<CardOnFileDependency>, CardOnFileBuildabl
     super.init(dependency: dependency)
   }
   
-  func build(withListener listener: CardOnFileListener, paymentMethods: [PaymentMethod]) -> ViewableRouting {
+  func build(withListener listener: CardOnFileListener, paymentMethods: [PaymentMethod]) -> CardOnFileRouting {
     _ = CardOnFileComponent(dependency: dependency)
     let viewController = CardOnFileViewController()
     let interactor = CardOnFileInteractor(presenter: viewController, paymentMethods: paymentMethods)
