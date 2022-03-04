@@ -8,22 +8,26 @@
 @testable import TopupImp
 import XCTest
 import RIBsTestSupport
+import AddPaymentMethodTestSupport
 
 final class TopupRouterTests: XCTestCase {
   
   private var sut: TopupRouter!
   private var interactor: TopupInteractableMock!
   private var viewController: ViewControllableMock
+  private var addPaymentMethodBuildable: AddPaymentMethodBuildableMock!
   
   override func setUp() {
     super.setUp()
     
+    self.interactor = TopupInteractableMock()
     self.viewController = ViewControllableMock()
+    self.addPaymentMethodBuildable = AddPaymentMethodBuildableMock()
     
     self.sut = TopupRouter(
       interactor: interactor,
       viewController: self.viewController,
-      addPaymentMethodBuildable: <#T##AddPaymentMethodBuildable#>,
+      addPaymentMethodBuildable: addPaymentMethodBuildable,
       enterAmountBuildable: <#T##EnterAmountBuildable#>,
       cardOnFileBuidable: <#T##CardOnFileBuildable#>
     )
