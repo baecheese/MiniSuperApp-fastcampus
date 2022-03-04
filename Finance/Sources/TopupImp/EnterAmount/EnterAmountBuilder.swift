@@ -26,7 +26,7 @@ final class EnterAmountComponent: Component<EnterAmountDependency>, EnterAmountI
 // MARK: - Builder
 
 protocol EnterAmountBuildable: Buildable {
-    func build(withListener listener: EnterAmountListener) -> ViewableRouting
+    func build(withListener listener: EnterAmountListener) -> EnterAmountRouting
 }
 
 final class EnterAmountBuilder: Builder<EnterAmountDependency>, EnterAmountBuildable {
@@ -35,7 +35,7 @@ final class EnterAmountBuilder: Builder<EnterAmountDependency>, EnterAmountBuild
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: EnterAmountListener) -> ViewableRouting {
+    func build(withListener listener: EnterAmountListener) -> EnterAmountRouting {
         let component = EnterAmountComponent(dependency: dependency)
         let viewController = EnterAmountViewController()
         let interactor = EnterAmountInteractor(presenter: viewController, dependency: component)

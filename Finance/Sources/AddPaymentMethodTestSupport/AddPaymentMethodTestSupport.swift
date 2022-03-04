@@ -25,4 +25,8 @@ public final class AddPaymentMethodBuildableMock: AddPaymentMethodBuildable {
     )
   }
   
+  public init() {
+    
+  }
+  
 }
