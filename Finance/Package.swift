@@ -128,7 +128,8 @@ let package = Package(
       dependencies: [
         "TopupImp",
         "FinanceRepositoryTestSupport",
-        "TopupTestSupport"
+        "TopupTestSupport",
+        .product(name: "RIBsTestSupport", package: "Platform")
       ]
     )
   ]
